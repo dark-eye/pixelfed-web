@@ -1,0 +1,152 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the pixelfed-web.darkeye package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pixelfed-web.darkeye\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-30 14:31+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../qml/pages/InstancePicker.qml:75
+msgid "Choose a PixelFed instance"
+msgstr ""
+
+#: ../qml/pages/InstancePicker.qml:83
+#: ../qml/components/BottomEdgeControlsHeader.qml:62
+msgid "Info"
+msgstr ""
+
+#: ../qml/pages/InstancePicker.qml:105
+msgid "Only show nodes that allow registration"
+msgstr ""
+
+#: ../qml/pages/InstancePicker.qml:126
+msgid "Search or enter a custom address"
+msgstr ""
+
+#: ../qml/pages/InstancePicker.qml:167
+msgid "No pods fund for search : %1"
+msgstr ""
+
+#: ../qml/pages/InstancePicker.qml:167
+msgid "No pods returned from server"
+msgstr ""
+
+#: ../qml/pages/Information.qml:8
+msgid "About"
+msgstr ""
+
+#: ../qml/pages/Information.qml:17
+msgid "Based on uMastonauts webapp"
+msgstr ""
+
+#: ../qml/pages/Information.qml:18
+msgid "Get the source"
+msgstr ""
+
+#: ../qml/pages/Information.qml:19
+msgid "Report issues"
+msgstr ""
+
+#: ../qml/pages/Information.qml:20
+msgid "GNU General Public License v3.0"
+msgstr ""
+
+#: ../qml/pages/Information.qml:21
+msgid "Contributors"
+msgstr ""
+
+#: ../qml/pages/Information.qml:22
+msgid "Donate"
+msgstr ""
+
+#: ../qml/pages/Information.qml:23
+msgid "Telegram"
+msgstr ""
+
+#: ../qml/pages/Information.qml:53
+msgid "PixelFed WebApp"
+msgstr ""
+
+#: ../qml/pages/PixelFedWebview.qml:75
+msgid "Loading "
+msgstr ""
+
+#: ../qml/components/MainWebView.qml:74
+msgid "Copy Link"
+msgstr ""
+
+#: ../qml/components/MainWebView.qml:81
+msgid "Copy Image"
+msgstr ""
+
+#: ../qml/components/MainWebView.qml:87
+msgid "Open in browser"
+msgstr ""
+
+#: ../qml/components/InstanceItem.qml:27
+msgid "Location: %1"
+msgstr ""
+
+#: ../qml/components/InstanceItem.qml:28
+#, javascript-format
+msgid "Uptime: %1%"
+msgstr ""
+
+#: ../qml/components/AddPost.qml:34
+msgid "Add Post"
+msgstr ""
+
+#: ../qml/components/AddPost.qml:86
+msgid "Please log in"
+msgstr ""
+
+#: ../qml/components/AddPost.qml:86
+msgid "In incognito mode"
+msgstr ""
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:44
+msgid "Go home"
+msgstr ""
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:50
+msgid "Reload"
+msgstr ""
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:55
+msgid "Go Back"
+msgstr ""
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:69
+msgid "Links open externally"
+msgstr ""
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:69
+msgid "Links open internally"
+msgstr ""
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:87
+msgid "Change Node"
+msgstr ""
+
+#: ../qml/components/dialogs/PromptDialog.qml:25
+msgid "Prompt Action"
+msgstr ""
+
+#: ../qml/components/dialogs/ConfirmDialog.qml:25
+msgid "Confirm Action"
+msgstr ""
+
+#: pixelfed-web.desktop.in.h:1
+msgid "PixelFed"
+msgstr ""
