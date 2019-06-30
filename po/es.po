@@ -1,0 +1,152 @@
+# Spanish translation for pixelfed-web.
+# Copyright (C) 2019
+# This file is distributed under the same license as the pixelfed-web.darkeye package.
+# advocatux <advocatux@airpost.net>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pixelfed-web.darkeye\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-30 14:31+0000\n"
+"PO-Revision-Date: 2019-06-30 20:46+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: advocatux <advocatux@airpost.net>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: ../qml/pages/InstancePicker.qml:75
+msgid "Choose a PixelFed instance"
+msgstr "Elija una instancia de PixelFed"
+
+#: ../qml/pages/InstancePicker.qml:83
+#: ../qml/components/BottomEdgeControlsHeader.qml:62
+msgid "Info"
+msgstr "Información"
+
+#: ../qml/pages/InstancePicker.qml:105
+msgid "Only show nodes that allow registration"
+msgstr "Mostrar solo nodos que permitan el registro"
+
+#: ../qml/pages/InstancePicker.qml:126
+msgid "Search or enter a custom address"
+msgstr "Buscar o introducir una dirección personalizada"
+
+#: ../qml/pages/InstancePicker.qml:167
+msgid "No pods fund for search : %1"
+msgstr "No se encontraron «pods» (contenedores) para buscar: %1"
+
+#: ../qml/pages/InstancePicker.qml:167
+msgid "No pods returned from server"
+msgstr "No hay «pods» (contenedores) enviados desde el servidor"
+
+#: ../qml/pages/Information.qml:8
+msgid "About"
+msgstr "Acerca de"
+
+#: ../qml/pages/Information.qml:17
+msgid "Based on uMastonauts webapp"
+msgstr "Basado en la aplicación web uMastonauts"
+
+#: ../qml/pages/Information.qml:18
+msgid "Get the source"
+msgstr "Obtener código fuente"
+
+#: ../qml/pages/Information.qml:19
+msgid "Report issues"
+msgstr "Informar de fallos"
+
+#: ../qml/pages/Information.qml:20
+msgid "GNU General Public License v3.0"
+msgstr "Licencia Pública General GNU v3.0"
+
+#: ../qml/pages/Information.qml:21
+msgid "Contributors"
+msgstr "Colaboradores"
+
+#: ../qml/pages/Information.qml:22
+msgid "Donate"
+msgstr "Donar"
+
+#: ../qml/pages/Information.qml:23
+msgid "Telegram"
+msgstr "Telegram"
+
+#: ../qml/pages/Information.qml:53
+msgid "PixelFed WebApp"
+msgstr "Aplicación web PixelFed"
+
+#: ../qml/pages/PixelFedWebview.qml:75
+msgid "Loading "
+msgstr "Cargando "
+
+#: ../qml/components/MainWebView.qml:74
+msgid "Copy Link"
+msgstr "Copiar enlace"
+
+#: ../qml/components/MainWebView.qml:81
+msgid "Copy Image"
+msgstr "Copiar imagen"
+
+#: ../qml/components/MainWebView.qml:87
+msgid "Open in browser"
+msgstr "Abrir en el navegador"
+
+#: ../qml/components/InstanceItem.qml:27
+msgid "Location: %1"
+msgstr "Ubicación: %1"
+
+#: ../qml/components/InstanceItem.qml:28
+#, javascript-format
+msgid "Uptime: %1%"
+msgstr "Tiempo de actividad: %1%"
+
+#: ../qml/components/AddPost.qml:34
+msgid "Add Post"
+msgstr "Añadir mensaje"
+
+#: ../qml/components/AddPost.qml:86
+msgid "Please log in"
+msgstr "Inicie sesión"
+
+#: ../qml/components/AddPost.qml:86
+msgid "In incognito mode"
+msgstr "En modo incógnito"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:44
+msgid "Go home"
+msgstr "Ir a inicio"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:50
+msgid "Reload"
+msgstr "Recargar"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:55
+msgid "Go Back"
+msgstr "Atrás"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:69
+msgid "Links open externally"
+msgstr "Los enlaces se abren externamente"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:69
+msgid "Links open internally"
+msgstr "Los enlaces se abren internamente"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:87
+msgid "Change Node"
+msgstr "Cambiar nodo"
+
+#: ../qml/components/dialogs/PromptDialog.qml:25
+msgid "Prompt Action"
+msgstr "Acción rápida"
+
+#: ../qml/components/dialogs/ConfirmDialog.qml:25
+msgid "Confirm Action"
+msgstr "Confirmar acción"
+
+#: pixelfed-web.desktop.in.h:1
+msgid "PixelFed"
+msgstr "PixelFed"
