@@ -9,7 +9,7 @@ ListItem {
     property var text: ""
     property var country : ""
     property var version: ""
-    property var iconSource: "../../assets/pixelfed_logo.png"
+    property var iconSource: "../../assets/pixelfed_logo.svg"
 	property var status: 0
 	property var users: 0
 	property var rating: 0

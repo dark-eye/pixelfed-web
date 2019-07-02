@@ -18,7 +18,7 @@ Page {
 		onMessage:instanceList.writeInList (  messageObject.reply );
 	}
 
-    /* Load list of Mastodon Instances from https://instances.social
+    /* Load list of PixelFed Instances from https://instances.social
     * The Response is in format:
     * { id, name, added_at, updated_at, checked_at, uptime, up, dead, version,
     * ipv6, https_score, https_rank, obs_score, obs_rank, users, statuses,
@@ -151,7 +151,7 @@ Page {
                         "country": list[i].countryName != null ? list[i].countryName : "",
                         "version": list[i].version != null ? list[i].version : "",
 						"users": list[i].usersTotal != null ? list[i].usersTotal : "",
-                        "iconSource":  list[i].thumbnail != null ? list[i].thumbnail : "../../assetspixelfed_logo.png",
+                        "iconSource":  list[i].thumbnail != null ? list[i].thumbnail : "../../assets/pixelfed_logo.svg",
 						"status":  list[i].openSignups != null ? list[i].openSignups : 0,
 						"rating":  list[i].score != null ? list[i].score : 0
                     })

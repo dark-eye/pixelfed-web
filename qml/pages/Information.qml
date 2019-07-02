@@ -20,7 +20,7 @@ Page {
 		infoModel.append({ name: i18n.tr("GNU General Public License v3.0"), url: "https://github.com/dark-eye/pixelfed-web/blob/master/LICENSE",icon:"note" })
 		infoModel.append({ name: i18n.tr("Contributors"), url: "https://github.com/dark-eye/pixelfed-web/graphs/contributors" ,icon:"contact-group"})
 		infoModel.append({ name: i18n.tr("Donate"), url: "https://liberapay.com/darkeye/", icon:"like" })
-		infoModel.append({ name: i18n.tr("Telegram"), url: "https://t.me/PixelFed_webapp", icon:"send" })
+		infoModel.append({ name: i18n.tr("Telegram"), url: "https://t.me/upixelfedwebapp", icon:"send" })
 	}
 
 	Column {
@@ -50,7 +50,7 @@ Page {
 			font.bold: true
 			color: theme.palette.normal.backgroundText
 			horizontalAlignment: Text.AlignHCenter
-			text: i18n.tr("PixelFed WebApp")
+			text: i18n.tr("uPixelFed WebApp")
 		}
 
 	}

@@ -2,7 +2,7 @@
     "name": "pixelfed-web.darkeye",
     "description": "A simple pixelfed social network webapp",
     "architecture": "@CLICK_ARCH@",
-    "title": "PixelFed",
+    "title": "uPixelFed",
     "hooks": {
         "pixelfed-web": {
             "apparmor": "pixelfed-web.apparmor",

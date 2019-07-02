@@ -1,5 +1,5 @@
 [Desktop Entry]
-_Name=PixelFed
+_Name=uPixelFed
 Exec=qmlscene qml/Main.qml
 Icon=assets/logo.svg
 Terminal=false

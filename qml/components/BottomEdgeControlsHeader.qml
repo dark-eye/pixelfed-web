@@ -26,14 +26,17 @@ PageHeader {
 		id:_headersControls
 		
 		property var trailingSlots: !webviewPage.isOnMainSite() ? 4 : 3
+		property var callOnAction: null
 
 		StyleHints {
 			backgroundColor: settings.incognitoMode ? UbuntuColors.purple : theme.palette.normal.background
 		}
 		
-		MouseArea {
-			anchors.fill:parent
-			z:-1
+
+		function callbackOnAction(actionNnme) {
+			if(callOnAction) {
+				callOnAction(actionNnme)
+			}
 		}
 
 		trailingActionBar {
@@ -43,19 +46,28 @@ PageHeader {
 				Action {
 					text:i18n.tr("Go home")
 					iconName:"home"
-					onTriggered:webviewPage.currentView().goHome();
+					onTriggered: {
+						webviewPage.currentView().goHome();
+						_headersControls.callbackOnAction("home");
+					}
 					visible:!webviewPage.isOnMainSite()
 				},
 				Action {
 					text:i18n.tr("Reload")
 					iconName:"reload"
-					onTriggered:webviewPage.currentView().reload();
+					onTriggered: {
+						webviewPage.currentView().reload();
+						_headersControls.callbackOnAction("reload");
+					}
 				},
 				Action {
 					text:i18n.tr("Go Back")
 					iconName:"back"
 					enabled:webviewPage.currentView().canGoBack
-					onTriggered:webviewPage.currentView().goBack()
+					onTriggered: {
+						webviewPage.currentView().goBack()
+						_headersControls.callbackOnAction("back");
+					}
 				},
 				//-------------------------------------------------------------
 				Action {
@@ -72,6 +84,7 @@ PageHeader {
 					checked: settings.openLinksExternally
 					onToggled:{
 						settings.openLinksExternally = checked;
+						_headersControls.callbackOnAction("external-links");
 					}
 				},
 // 				Action {

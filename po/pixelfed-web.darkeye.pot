@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pixelfed-web.darkeye\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-30 14:31+0000\n"
+"POT-Creation-Date: 2019-07-02 11:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgid "Choose a PixelFed instance"
 msgstr ""
 
 #: ../qml/pages/InstancePicker.qml:83
-#: ../qml/components/BottomEdgeControlsHeader.qml:62
+#: ../qml/components/BottomEdgeControlsHeader.qml:74
 msgid "Info"
 msgstr ""
 
@@ -75,7 +75,7 @@ msgid "Telegram"
 msgstr ""
 
 #: ../qml/pages/Information.qml:53
-msgid "PixelFed WebApp"
+msgid "uPixelFed WebApp"
 msgstr ""
 
 #: ../qml/pages/PixelFedWebview.qml:75
@@ -103,39 +103,27 @@ msgstr ""
 msgid "Uptime: %1%"
 msgstr ""
 
-#: ../qml/components/AddPost.qml:34
-msgid "Add Post"
-msgstr ""
-
-#: ../qml/components/AddPost.qml:86
-msgid "Please log in"
-msgstr ""
-
-#: ../qml/components/AddPost.qml:86
-msgid "In incognito mode"
-msgstr ""
-
-#: ../qml/components/BottomEdgeControlsHeader.qml:44
+#: ../qml/components/BottomEdgeControlsHeader.qml:47
 msgid "Go home"
 msgstr ""
 
-#: ../qml/components/BottomEdgeControlsHeader.qml:50
+#: ../qml/components/BottomEdgeControlsHeader.qml:56
 msgid "Reload"
 msgstr ""
 
-#: ../qml/components/BottomEdgeControlsHeader.qml:55
+#: ../qml/components/BottomEdgeControlsHeader.qml:64
 msgid "Go Back"
 msgstr ""
 
-#: ../qml/components/BottomEdgeControlsHeader.qml:69
+#: ../qml/components/BottomEdgeControlsHeader.qml:81
 msgid "Links open externally"
 msgstr ""
 
-#: ../qml/components/BottomEdgeControlsHeader.qml:69
+#: ../qml/components/BottomEdgeControlsHeader.qml:81
 msgid "Links open internally"
 msgstr ""
 
-#: ../qml/components/BottomEdgeControlsHeader.qml:87
+#: ../qml/components/BottomEdgeControlsHeader.qml:100
 msgid "Change Node"
 msgstr ""
 
@@ -148,5 +136,5 @@ msgid "Confirm Action"
 msgstr ""
 
 #: pixelfed-web.desktop.in.h:1
-msgid "PixelFed"
+msgid "uPixelFed"
 msgstr ""

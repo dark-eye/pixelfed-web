@@ -135,15 +135,37 @@ Page {
 		}
 	}
 
+	InverseMouseArea {
+		anchors {
+			bottom:parent.bottom
+			left:parent.left
+			right:parent.right
+		}
+		height:units.gu(25)
+		enabled:instancBottomEdge.status != BottomEdge.Hidden
+		visible:enabled
+		topmostItem:true
+		onClicked:instancBottomEdge.collapse();
+	}
+	Rectangle {
+		anchors {
+			fill:parent
+		}
+		visible:instancBottomEdge.status != BottomEdge.Hidden
+		color:theme.palette.normal.overlay
+		opacity:0.25
+	}
 
 	BottomEdge {
 		id: instancBottomEdge
 		visible: webviewPage.currentView().visible  && webviewPage.isOnMainSite()
-		height:units.gu(6)
+		height:units.gu(7)
 		hint.iconName: "go-up"
 		hint.visible:visible
+ 		hint.flickable:webView
+ 		hint.deactivateTimeout:10
 		preloadContent: false
-		hint.opacity:0.2
+		hint.opacity: instancBottomEdge.status != BottomEdge.Hidden ?   1 : 0.1
 		contentComponent: Component {
 			BottomEdgeControlsHeader {
 				anchors.fill:instancBottomEdge
@@ -157,11 +179,11 @@ Page {
 						}
 					]
 				}
+				callOnAction: function(actionName) {
+					instancBottomEdge.collapse();
+				}
 			}
-
 		}
-
-		onCommitStarted: contentItem.resetURL();
 	}
 	
 	//========================== Functions =======================
