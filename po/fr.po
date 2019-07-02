@@ -1,0 +1,151 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the pixelfed-web.darkeye package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pixelfed-web.darkeye\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-30 14:31+0000\n"
+"PO-Revision-Date: 2019-06-30 19:04+0000\n"
+"Last-Translator: Anne017 <anneonyme017@openmailox.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../qml/pages/InstancePicker.qml:75
+msgid "Choose a PixelFed instance"
+msgstr "Choisissez une instance PixelFed"
+
+#: ../qml/pages/InstancePicker.qml:83
+#: ../qml/components/BottomEdgeControlsHeader.qml:62
+msgid "Info"
+msgstr "Informations"
+
+#: ../qml/pages/InstancePicker.qml:105
+msgid "Only show nodes that allow registration"
+msgstr "Affiche uniquement les nœuds qui permettent une inscription"
+
+#: ../qml/pages/InstancePicker.qml:126
+msgid "Search or enter a custom address"
+msgstr "Cherchez ou saisissez une adresse personnalisée"
+
+#: ../qml/pages/InstancePicker.qml:167
+msgid "No pods fund for search : %1"
+msgstr "Aucune instance trouvée pour la recherche : %1"
+
+#: ../qml/pages/InstancePicker.qml:167
+msgid "No pods returned from server"
+msgstr "Aucune instance renvoyée par le serveur"
+
+#: ../qml/pages/Information.qml:8
+msgid "About"
+msgstr "À propos"
+
+#: ../qml/pages/Information.qml:17
+msgid "Based on uMastonauts webapp"
+msgstr "Basée sur l'application Web uMastonauts"
+
+#: ../qml/pages/Information.qml:18
+msgid "Get the source"
+msgstr "Consulter le code source"
+
+#: ../qml/pages/Information.qml:19
+msgid "Report issues"
+msgstr "Signaler un problème"
+
+#: ../qml/pages/Information.qml:20
+msgid "GNU General Public License v3.0"
+msgstr "Licence Publique Générale GNU v3.0"
+
+#: ../qml/pages/Information.qml:21
+msgid "Contributors"
+msgstr "Contributeurs/trices"
+
+#: ../qml/pages/Information.qml:22
+msgid "Donate"
+msgstr "Faire un don"
+
+#: ../qml/pages/Information.qml:23
+msgid "Telegram"
+msgstr "Telegram"
+
+#: ../qml/pages/Information.qml:53
+msgid "PixelFed WebApp"
+msgstr "WebApp PixelFed"
+
+#: ../qml/pages/PixelFedWebview.qml:75
+msgid "Loading "
+msgstr "Chargement "
+
+#: ../qml/components/MainWebView.qml:74
+msgid "Copy Link"
+msgstr "Copier le lien"
+
+#: ../qml/components/MainWebView.qml:81
+msgid "Copy Image"
+msgstr "Copier l'image"
+
+#: ../qml/components/MainWebView.qml:87
+msgid "Open in browser"
+msgstr "Ouvrir dans un navigateur"
+
+#: ../qml/components/InstanceItem.qml:27
+msgid "Location: %1"
+msgstr "Emplacement : %1"
+
+#: ../qml/components/InstanceItem.qml:28
+#, javascript-format
+msgid "Uptime: %1%"
+msgstr "Disponibilité : %1%"
+
+#: ../qml/components/AddPost.qml:34
+msgid "Add Post"
+msgstr "Ajouter une publication"
+
+#: ../qml/components/AddPost.qml:86
+msgid "Please log in"
+msgstr "Veuillez vous connecter"
+
+#: ../qml/components/AddPost.qml:86
+msgid "In incognito mode"
+msgstr "En mode incognito"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:44
+msgid "Go home"
+msgstr "Revenir à l'accueil"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:50
+msgid "Reload"
+msgstr "Actualiser"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:55
+msgid "Go Back"
+msgstr "Revenir en arrière"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:69
+msgid "Links open externally"
+msgstr "Liens ouverts vers l'extérieur"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:69
+msgid "Links open internally"
+msgstr "Liens ouverts en interne"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:87
+msgid "Change Node"
+msgstr "Changer de nœud"
+
+#: ../qml/components/dialogs/PromptDialog.qml:25
+msgid "Prompt Action"
+msgstr "Action rapide"
+
+#: ../qml/components/dialogs/ConfirmDialog.qml:25
+msgid "Confirm Action"
+msgstr "Confirmer l'action"
+
+#: pixelfed-web.desktop.in.h:1
+msgid "PixelFed"
+msgstr "PixelFed"
