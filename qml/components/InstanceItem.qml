@@ -25,7 +25,7 @@ ListItem {
         id: layout
         title.text: text
         subtitle.text: i18n.tr("Location: %1").arg(country)
-        summary.text: i18n.tr("Uptime: %1%").arg(version)
+        summary.text: i18n.tr("Version %1").arg(version) + (users ? i18n.tr(" With %1 users").arg(users) : "")
         Image {
             id: icon
             source: iconSource

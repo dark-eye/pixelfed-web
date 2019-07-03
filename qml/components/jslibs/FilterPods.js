@@ -6,9 +6,9 @@ WorkerScript.onMessage =  function(message) {
 		if(message.onlyReg && list[i].openSignups != message.onlyReg ) {
 			continue;
 		}
-		if(message.searchTerm == "" || list[i].name && list[i].name.match(new RegExp(message.searchTerm))
-			|| list[i].host && list[i].host.match(new RegExp(message.searchTerm))
-		|| list[i].countryCode && list[i].countryCode.match(new RegExp(message.searchTerm)))
+		if(message.searchTerm == "" || list[i].name && list[i].name.match(new RegExp(message.searchTerm,'i'))
+			|| list[i].host && list[i].host.match(new RegExp(message.searchTerm,'i'))
+		|| list[i].countryCode && list[i].countryCode.match(new RegExp(message.searchTerm,'i')))
 		{
 			retList.push(list[i]);
 		}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pixelfed-web.darkeye\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-02 11:01+0000\n"
+"POT-Creation-Date: 2019-07-03 06:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,29 +17,29 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/pages/InstancePicker.qml:75
+#: ../qml/pages/InstancePicker.qml:83
 msgid "Choose a PixelFed instance"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:83
+#: ../qml/pages/InstancePicker.qml:91
 #: ../qml/components/BottomEdgeControlsHeader.qml:74
 msgid "Info"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:105
+#: ../qml/pages/InstancePicker.qml:120
 msgid "Only show nodes that allow registration"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:126
+#: ../qml/pages/InstancePicker.qml:141
 msgid "Search or enter a custom address"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:167
-msgid "No pods fund for search : %1"
+#: ../qml/pages/InstancePicker.qml:182
+msgid "No results found for search : %1"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:167
-msgid "No pods returned from server"
+#: ../qml/pages/InstancePicker.qml:182
+msgid "No results returned from server"
 msgstr ""
 
 #: ../qml/pages/Information.qml:8
@@ -99,8 +99,11 @@ msgid "Location: %1"
 msgstr ""
 
 #: ../qml/components/InstanceItem.qml:28
-#, javascript-format
-msgid "Uptime: %1%"
+msgid "Version %1"
+msgstr ""
+
+#: ../qml/components/InstanceItem.qml:28
+msgid " With %1 users"
 msgstr ""
 
 #: ../qml/components/BottomEdgeControlsHeader.qml:47

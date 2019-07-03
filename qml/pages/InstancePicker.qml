@@ -38,6 +38,14 @@ Page {
             if (http.readyState === XMLHttpRequest.DONE) {
 				console.log(http.responseText);
                 var response = JSON.parse(http.responseText);
+				for(var j in  response.data.nodes) {
+					response.data.nodes[j].stats= {};
+				for(var i in response.data.statsNodes) {
+						if(response.data.statsNodes[i].node.id == response.data.nodes[j].id ) {
+							response.data.nodes[j].stats = response.data.statsNodes[i];
+						}
+					}
+				}
 				var nodes = response.data.nodes;
 				lastList = nodes;
 				updateTime = Date.now();
@@ -96,12 +104,19 @@ Page {
             }
             ]
         }
-        extension: Row {
-			anchors {
-				leftMargin:units.gu(5)
+        extension:	Item {
+			 anchors {
+				left: parent.left
+				leftMargin: units.gu(2)
+				bottom: parent.bottom
 			}
+			height: units.gu(4)
+
 			CheckBox {
 				id:onlyWithRegChkBox
+				StyleHints {
+					foregroundColor:theme.palette.normal.backgroundTertiaryText
+				}
 				text: i18n.tr("Only show nodes that allow registration")
 				checked: false;
 				onTriggered:search();
@@ -143,14 +158,14 @@ Page {
             function writeInList ( list ) {
                 instanceList.children = ""
                 loading.visible = false
-                list.sort(function(a,b) {return !a.usersTotal ? (!b.usersTotal ? 0 : 1) : (!b.usersTotal ? -1 : parseFloat(b.usersTotal) - parseFloat(a.usersTotal));});
+                list.sort(function(a,b) {return !a.stats.usersTotal ? (!b.stats.usersTotal ? 0 : 1) : (!b.stats.usersTotal ? -1 : parseFloat(b.stats.usersTotal) - parseFloat(a.stats.usersTotal));});
                 for ( var i = 0; i < list.length; i++ ) {
                     var item = Qt.createComponent("../components/InstanceItem.qml")
                     item.createObject(this, {
                         "text": list[i].name,
                         "country": list[i].countryName != null ? list[i].countryName : "",
                         "version": list[i].version != null ? list[i].version : "",
-						"users": list[i].usersTotal != null ? list[i].usersTotal : "",
+						"users": list[i].stats.usersTotal != null ? list[i].stats.usersTotal : "",
                         "iconSource":  list[i].thumbnail != null ? list[i].thumbnail : "../../assets/pixelfed_logo.svg",
 						"status":  list[i].openSignups != null ? list[i].openSignups : 0,
 						"rating":  list[i].score != null ? list[i].score : 0
@@ -164,7 +179,7 @@ Page {
 		id:noResultsLabel
 		visible: !instanceList.children.length && !loading.visible
 		anchors.centerIn: scrollView;
-		text:customInstanceInput.length ? i18n.tr("No pods fund for search : %1").arg(customInstanceInput.displayText) :  i18n.tr("No pods returned from server");
+		text:customInstanceInput.length ? i18n.tr("No results found for search : %1").arg(customInstanceInput.displayText) :  i18n.tr("No results returned from server");
 	}
 
 }
