@@ -9,7 +9,7 @@
             "desktop":  "pixelfed-web.desktop"
         }
     },
-    "version": "0.1.1",
+    "version": "0.1.2",
     "maintainer": "Eran 'DarkEye' Uzan <etherpulse@gmail.com>",
     "framework" : "ubuntu-sdk-16.04"
 }
