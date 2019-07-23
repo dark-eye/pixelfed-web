@@ -48,7 +48,7 @@ PageHeader {
 					iconName:"home"
 					onTriggered: {
 						webviewPage.currentView().goHome();
-						_headersControls.callbackOnAction("home");
+						//_headersControls.callbackOnAction("home");
 					}
 					visible:!webviewPage.isOnMainSite()
 				},
@@ -57,7 +57,7 @@ PageHeader {
 					iconName:"reload"
 					onTriggered: {
 						webviewPage.currentView().reload();
-						_headersControls.callbackOnAction("reload");
+						//_headersControls.callbackOnAction("reload");
 					}
 				},
 				Action {
@@ -66,7 +66,7 @@ PageHeader {
 					enabled:webviewPage.currentView().canGoBack
 					onTriggered: {
 						webviewPage.currentView().goBack()
-						_headersControls.callbackOnAction("back");
+						//_headersControls.callbackOnAction("back");
 					}
 				},
 				//-------------------------------------------------------------
@@ -75,6 +75,7 @@ PageHeader {
 					iconName: "info"
 					onTriggered: {
 						mainStack.push(Qt.resolvedUrl("../pages/Information.qml"))
+						_headersControls.callbackOnAction("info");
 					}
 				},
 				Action {
@@ -101,8 +102,9 @@ PageHeader {
 					iconName:"swap"
 					onTriggered: {
 						settings.instance = undefined
-						mainStack.clear ()
+						mainStack.clear();
 						mainStack.push (Qt.resolvedUrl("../pages/InstancePicker.qml"))
+
 					}	
 				}
 			]

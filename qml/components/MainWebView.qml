@@ -32,6 +32,7 @@ WebEngineView {
 	height: parent.height
 	visible: false
 	property var lastStatus:WebEngineView.LoadFailedStatus
+	property var isLoaded: false
 	property var  preferences : {}
 	property bool fullscren: isFullScreen
 
@@ -40,12 +41,13 @@ WebEngineView {
 	profile:  mainWebProfile
 
 	onLoadProgressChanged: {
-		visible |= !loading
+		//visible |= !loading
 	}
 
 	onLoadingChanged:{
 		lastStatus = loadRequest.status
-		visible |= (lastStatus == WebEngineLoadRequest.LoadSucceededStatus && loadProgress == 100) && (  !loading )
+		visible |= (lastStatus == WebEngineLoadRequest.LoadSucceededStatus && loadProgress == 100) && ( !loading )
+		isLoaded |= !loading
 		console.log(units.gu(1))
 	}
 	anchors.fill: parent

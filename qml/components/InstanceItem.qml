@@ -18,6 +18,7 @@ ListItem {
 
     onClicked: {
         settings.instance = text
+		mainStack.clear();
         mainStack.push (Qt.resolvedUrl("../pages/PixelFedWebview.qml"))
     }
 

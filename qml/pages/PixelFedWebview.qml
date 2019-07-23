@@ -31,6 +31,7 @@ Page {
 			left:parent.left
 			right:parent.right
 			bottom:parent.bottom
+			bottomMargin: instancBottomEdge.hint.status == BottomEdgeHint.Locked ? units.gu(4) : 0;
 		}
 		MainWebView {
 			id:webView
@@ -41,83 +42,23 @@ Page {
 			promptDialog:PromptDialog {}
 			z: settings.incognitoMode ? -1 : 1
 			onLoadProgressChanged: {
-				progressBar.value = loadProgress
+				loadingPage.progressBar.value = loadProgress
 			}
 			settings.showScrollBars:false
 		}
 	}
 
-
-	Rectangle {
+	LoadingPage {
 		id:loadingPage
 		anchors.fill: parent
-		visible: !webviewPage.currentView().visible
-		color: theme.palette.normal.background
-		
-		property bool hasLoadError: ( progressBar.value == 100 && webviewPage.currentView().lastError )
 
-		onVisibleChanged: if(visible) {
-			reloadButton.visible = false;
-		}
-		
-		Timer {
-			interval: 5000
-			running: visible
-			onTriggered: {
-				reloadButton.visible = true;
-			}
-		}
-		
-		
-		Label {
-			id: progressLabel
-			color: theme.palette.normal.backgroundText
-			text: i18n.tr('Loading ') + settings.instance
-			anchors.centerIn: parent
-			textSize: Label.XLarge
-		}
+		hasLoadError:  ( typeof(webviewPage.currentView()) !== 'undefined' && !webviewPage.currentView().loading && webviewPage.currentView().lastStatus == WebEngineView.LoadFailedStatus )
 
-		ProgressBar {
-			id: progressBar
-			value: 0
-			minimumValue: 0
-			maximumValue: 100
-			anchors.top: progressLabel.bottom
-			anchors.horizontalCenter: parent.horizontalCenter
-			anchors.topMargin: 10
-			StyleHints {
-				foregroundColor: loadingPage.hasLoadError ? 
-									theme.palette.normal.negative :
-									theme.palette.normal.progress
-			}
-		}
-		
-		Button {
-			id:reloadButton
-			visible: loadingPage.hasLoadError
-			anchors.top: progressBar.bottom
-			anchors.topMargin: units.gu(2)
-			anchors.horizontalCenter: parent.horizontalCenter
-			color: loadingPage.hasLoadError ? theme.palette.normal.negative : UbuntuColors.blue
-			width:height + units.gu(1)
-			iconName:"reload"
-			onClicked: {
-				webviewPage.currentView().reload()
-			}
-		}
+		visible: opacity != 0
+		opacity: !webviewPage.currentView().isLoaded ? 1 : 0
+		Behavior on opacity { NumberAnimation { duration:UbuntuAnimation.BriskDuration} }
 
-		Button {
-			anchors.bottom: parent.bottom
-			anchors.bottomMargin: height
-			anchors.horizontalCenter: parent.horizontalCenter
-			color: UbuntuColors.red
-			text: "Choose another Instance"
-			onClicked: {
-				settings.instance = undefined
-				mainStack.clear ()
-				mainStack.push (Qt.resolvedUrl("./InstancePicker.qml"))
-			}
-		}
+		onReloadButtonPressed: webviewPage.currentView().reload();
 	}
 	
 	Rectangle {
@@ -151,9 +92,10 @@ Page {
 		anchors {
 			fill:parent
 		}
-		visible:instancBottomEdge.status != BottomEdge.Hidden
+		visible: opacity != 0
 		color:theme.palette.normal.overlay
-		opacity:0.25
+		opacity: instancBottomEdge.status != BottomEdge.Hidden ? 0.33 : 0
+		Behavior on opacity { NumberAnimation { duration:UbuntuAnimation.BriskDuration} }
 	}
 
 	BottomEdge {
@@ -164,8 +106,8 @@ Page {
 		hint.visible:visible
  		hint.flickable:webView
  		hint.deactivateTimeout:10
-		preloadContent: false
-		hint.opacity: instancBottomEdge.status != BottomEdge.Hidden ?   1 : 0.1
+		preloadContent: true
+		hint.opacity:  instancBottomEdge.hint.status != BottomEdgeHint.Inactive ? 1 : 0.1
 		contentComponent: Component {
 			BottomEdgeControlsHeader {
 				anchors.fill:instancBottomEdge
@@ -188,7 +130,7 @@ Page {
 	
 	//========================== Functions =======================
 	function currentView() {
-		return  settings.incognitoMode ? webViewIncogito : webView;
+		return webView;
 	}
 	
 	function  isOnMainSite() {
