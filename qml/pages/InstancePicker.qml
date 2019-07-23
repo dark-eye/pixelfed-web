@@ -37,25 +37,40 @@ Page {
 			searchRunning = false;
             if (http.readyState === XMLHttpRequest.DONE) {
 				console.log(http.responseText);
-                var response = JSON.parse(http.responseText);
-				for(var j in  response.data.nodes) {
-					response.data.nodes[j].stats= {};
-				for(var i in response.data.statsNodes) {
-						if(response.data.statsNodes[i].node.id == response.data.nodes[j].id ) {
-							response.data.nodes[j].stats = response.data.statsNodes[i];
+				try {
+					var response = JSON.parse(http.responseText);
+					if(response) {
+						for(var j in  response.data.nodes) {
+							response.data.nodes[j].stats= {};
+						for(var i in response.data.statsNodes) {
+								if(response.data.statsNodes[i].node.id == response.data.nodes[j].id ) {
+									response.data.nodes[j].stats = response.data.statsNodes[i];
+								}
+							}
 						}
+						var nodes = response.data.nodes;
+						lastList = nodes;
+						updateTime = Date.now();
+						asyncProcess.sendMessage( {searchTerm : customInstanceInput.displayText , inData : nodes });
 					}
+				} catch (e) {
+					instancePickerPage.errorOnRequest();
 				}
-				var nodes = response.data.nodes;
-				lastList = nodes;
-				updateTime = Date.now();
-				asyncProcess.sendMessage( {searchTerm : customInstanceInput.displayText , inData : nodes });
             }
         }
+        http.onerror = function(event) {
+			instancePickerPage.errorOnRequest();
+		}
+
         loading.running = true;
+		loadingError.visible = false;
         http.send();
     }
 
+    function errorOnRequest() {
+			loadingError.visible = true;
+			loading.visible = false;
+	}
 
     function search ()  {
 
@@ -69,6 +84,7 @@ Page {
 	
 		if(updateTime < Date.now()-60000) {
 			loading.visible = true
+			loadingError.visible = false;
 			instanceList.children = ""
 			getSample();
 		} else {
@@ -131,6 +147,14 @@ Page {
         anchors.centerIn: parent
     }
 
+    Label {
+        id: loadingError
+		anchors.centerIn: parent
+		visible:false
+        text : i18n.tr("Error loading instances nodes")
+		color:theme.palette.normal.negative
+    }
+
 
     TextField {
         id: customInstanceInput
@@ -158,6 +182,7 @@ Page {
             function writeInList ( list ) {
                 instanceList.children = ""
                 loading.visible = false
+				loadingError.visible = false;
                 list.sort(function(a,b) {return !a.stats.usersTotal ? (!b.stats.usersTotal ? 0 : 1) : (!b.stats.usersTotal ? -1 : parseFloat(b.stats.usersTotal) - parseFloat(a.stats.usersTotal));});
                 for ( var i = 0; i < list.length; i++ ) {
                     var item = Qt.createComponent("../components/InstanceItem.qml")
@@ -177,7 +202,7 @@ Page {
     
     Label {
 		id:noResultsLabel
-		visible: !instanceList.children.length && !loading.visible
+		visible: !instanceList.children.length && !loading.visible && !loadingError.visible
 		anchors.centerIn: scrollView;
 		text:customInstanceInput.length ? i18n.tr("No results found for search : %1").arg(customInstanceInput.displayText) :  i18n.tr("No results returned from server");
 	}

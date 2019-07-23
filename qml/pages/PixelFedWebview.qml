@@ -62,7 +62,7 @@ Page {
 	}
 	
 	Rectangle {
-		color: theme.pallete.highlighted.selectedText
+		color: theme.palette.highlighted.selectedText
 		anchors.bottom:instancBottomEdge.status !== BottomEdge.Committed ? parent.bottom : instancBottomEdge.top
 		anchors.bottomMargin: 1
 		width: parent.width * webviewPage.currentView().loadProgress / 100
@@ -104,7 +104,6 @@ Page {
 		height:units.gu(7)
 		hint.iconName: "go-up"
 		hint.visible:visible
- 		hint.flickable:webView
  		hint.deactivateTimeout:10
 		preloadContent: true
 		hint.opacity:  instancBottomEdge.hint.status != BottomEdgeHint.Inactive ? 1 : 0.1
