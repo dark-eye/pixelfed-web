@@ -27,7 +27,7 @@ MainView {
     }
 
     Settings {
-        id: settings
+        id: appSettings
         property var instance
         property bool openLinksExternally: false
         property bool incognitoMode: false
@@ -38,12 +38,12 @@ MainView {
 		id:helperFunctions
 		
 		function getInstanceURL() {
-			return settings.instance.indexOf("http") != -1 ? settings.instance : "https://" + settings.instance
+			return appSettings.instance.indexOf("http") != -1 ? appSettings.instance : "https://" + appSettings.instance
 		}
 	}
 
     Component.onCompleted: {
-        if ( settings.instance ) {
+        if ( appSettings.instance ) {
            mainStack.push(Qt.resolvedUrl("./pages/PixelFedWebview.qml"))
         }
         else {

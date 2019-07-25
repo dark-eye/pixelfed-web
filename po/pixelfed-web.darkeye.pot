@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pixelfed-web.darkeye\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-23 08:42+0000\n"
+"POT-Creation-Date: 2019-07-25 08:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,32 +17,33 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/pages/InstancePicker.qml:99
+#: ../qml/pages/InstancePicker.qml:96
 msgid "Choose a PixelFed instance"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:107
+#: ../qml/pages/InstancePicker.qml:104
 #: ../qml/components/BottomEdgeControlsHeader.qml:74
+#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:74
 msgid "Info"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:136
+#: ../qml/pages/InstancePicker.qml:133
 msgid "Only show nodes that allow registration"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:154
+#: ../qml/pages/InstancePicker.qml:151
 msgid "Error loading instances nodes"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:165
+#: ../qml/pages/InstancePicker.qml:162
 msgid "Search or enter a custom address"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:207
+#: ../qml/pages/InstancePicker.qml:204
 msgid "No results found for search : %1"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:207
+#: ../qml/pages/InstancePicker.qml:204
 msgid "No results returned from server"
 msgstr ""
 
@@ -86,59 +87,73 @@ msgstr ""
 msgid "Loading "
 msgstr ""
 
-#: ../qml/components/MainWebView.qml:76
+#: ../qml/components/MainWebView.qml:75
+#: ../qml/components/build/tmp/MainWebView.qml:76
 msgid "Copy Link"
 msgstr ""
 
-#: ../qml/components/MainWebView.qml:83
+#: ../qml/components/MainWebView.qml:82
+#: ../qml/components/build/tmp/MainWebView.qml:83
 msgid "Copy Image"
 msgstr ""
 
-#: ../qml/components/MainWebView.qml:89
+#: ../qml/components/MainWebView.qml:88
+#: ../qml/components/build/tmp/MainWebView.qml:89
 msgid "Open in browser"
 msgstr ""
 
 #: ../qml/components/InstanceItem.qml:28
+#: ../qml/components/build/tmp/InstanceItem.qml:28
 msgid "Location: %1"
 msgstr ""
 
 #: ../qml/components/InstanceItem.qml:29
+#: ../qml/components/build/tmp/InstanceItem.qml:29
 msgid "Version %1"
 msgstr ""
 
 #: ../qml/components/InstanceItem.qml:29
+#: ../qml/components/build/tmp/InstanceItem.qml:29
 msgid " With %1 users"
 msgstr ""
 
 #: ../qml/components/BottomEdgeControlsHeader.qml:47
+#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:47
 msgid "Go home"
 msgstr ""
 
 #: ../qml/components/BottomEdgeControlsHeader.qml:56
+#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:56
 msgid "Reload"
 msgstr ""
 
 #: ../qml/components/BottomEdgeControlsHeader.qml:64
+#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:64
 msgid "Go Back"
 msgstr ""
 
 #: ../qml/components/BottomEdgeControlsHeader.qml:82
+#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:82
 msgid "Links open externally"
 msgstr ""
 
 #: ../qml/components/BottomEdgeControlsHeader.qml:82
+#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:82
 msgid "Links open internally"
 msgstr ""
 
 #: ../qml/components/BottomEdgeControlsHeader.qml:101
+#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:101
 msgid "Change Node"
 msgstr ""
 
 #: ../qml/components/dialogs/PromptDialog.qml:25
+#: ../qml/components/build/tmp/dialogs/PromptDialog.qml:25
 msgid "Prompt Action"
 msgstr ""
 
 #: ../qml/components/dialogs/ConfirmDialog.qml:25
+#: ../qml/components/build/tmp/dialogs/ConfirmDialog.qml:25
 msgid "Confirm Action"
 msgstr ""
 

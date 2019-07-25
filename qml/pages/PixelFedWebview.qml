@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.1
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
 import QtGraphicalEffects 1.0
+import QtWebEngine 1.7
 
 import "../components"
 import "../components/dialogs"
@@ -24,14 +25,14 @@ Page {
 		PickerDialog {}
 	}
 	
-	Item {
+	Flickable {
 		id:webContainer
 		anchors {
 			top:parent.top
 			left:parent.left
 			right:parent.right
-			bottom:parent.bottom
-			bottomMargin: instancBottomEdge.hint.status == BottomEdgeHint.Locked ? units.gu(4) : 0;
+			bottom: parent.bottom
+			bottomMargin: instancBottomEdge.hint.status == BottomEdgeHint.Locked  ? units.gu(6) : 0;
 		}
 		MainWebView {
 			id:webView
@@ -40,11 +41,37 @@ Page {
 			confirmDialog: ConfirmDialog {}
 			alertDialog: AlertDialog {}
 			promptDialog:PromptDialog {}
-			z: settings.incognitoMode ? -1 : 1
 			onLoadProgressChanged: {
 				loadingPage.progressBar.value = loadProgress
 			}
 			settings.showScrollBars:false
+
+			onLoadingChanged: if(!loading && webviewPage.isOnMainSite()) {
+				zoomFactor = units.gu(1) / 8
+			}
+
+			// Open external URL's in the browser and not in the app
+			onNavigationRequested: {
+// 				console.log ( Object.keys(request) )
+				console.log ( request.url, ("" + request.url).indexOf ( appSettings.instance ) !== -1 )
+				if ( ("" + request.url).indexOf ( appSettings.instance ) !== -1 || !appSettings.openLinksExternally ) {
+					request.action = 0
+				} else {
+					request.action = 1
+					Qt.openUrlExternally( request.url )
+				}
+			}
+
+			onNewViewRequested: {
+// 				console.log ( Object.keys(request) )
+				request.action = 1
+				if ( !appSettings.openLinksExternally ) {
+					webView.url = request.requestedUrl
+				} else {
+					Qt.openUrlExternally( request.requestedUrl )
+				}
+			}
+
 		}
 	}
 
@@ -61,20 +88,32 @@ Page {
 		onReloadButtonPressed: webviewPage.currentView().reload();
 	}
 	
-	Rectangle {
-		color: theme.palette.highlighted.selectedText
-		anchors.bottom:instancBottomEdge.status !== BottomEdge.Committed ? parent.bottom : instancBottomEdge.top
-		anchors.bottomMargin: 1
-		width: parent.width * webviewPage.currentView().loadProgress / 100
-		height: units.gu(0.1)
-		visible: webviewPage.currentView().visible && webviewPage.currentView().loading
-		z:2
-		layer.enabled: true
-		layer.effect:DropShadow {
-			 radius: 5
-			 color:theme.palette.highlighted.selected
+
+	ProgressBar {
+			id: _bottomProgressBar
+			z:2
+			anchors.bottom:instancBottomEdge.status !== BottomEdge.Committed ? parent.bottom : instancBottomEdge.top
+			anchors.bottomMargin: 1
+			width: instancBottomEdge.width
+
+			visible: webviewPage.currentView().visible && webviewPage.currentView().loading
+
+			value:  webviewPage.currentView().loadProgress
+			indeterminate: value == 0
+			minimumValue: 0
+			maximumValue: 100
+			StyleHints {
+				foregroundColor: loadingPage.hasLoadError ?
+									theme.palette.normal.negative :
+									theme.palette.normal.progress
+			}
+			layer.enabled: true
+			layer.effect:DropShadow {
+				radius: 5
+				transparentBorder:true
+				color:theme.palette.highlighted.selected
+			}
 		}
-	}
 
 	InverseMouseArea {
 		anchors {
@@ -100,11 +139,12 @@ Page {
 
 	BottomEdge {
 		id: instancBottomEdge
-		visible: webviewPage.currentView().visible  && webviewPage.isOnMainSite()
+		visible: webviewPage.currentView().visible
 		height:units.gu(7)
-		hint.iconName: "go-up"
+		hint.iconName: "go-down"
 		hint.visible:visible
  		hint.deactivateTimeout:10
+		hint.flickable: webContainer
 		preloadContent: true
 		hint.opacity:  instancBottomEdge.hint.status != BottomEdgeHint.Inactive ? 1 : 0.1
 		contentComponent: Component {
@@ -133,7 +173,7 @@ Page {
 	}
 	
 	function  isOnMainSite() {
-		return (currentView().url.toString().indexOf(settings.instance) !== -1)
+		return (currentView().url.toString().indexOf(appSettings.instance) !== -1)
 	}
 	
 	function isLoggedin() {

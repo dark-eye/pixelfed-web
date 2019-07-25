@@ -17,7 +17,7 @@ ListItem {
     height: layout.height
 
     onClicked: {
-        settings.instance = text
+        appSettings.instance = text
 		mainStack.clear();
         mainStack.push (Qt.resolvedUrl("../pages/PixelFedWebview.qml"))
     }

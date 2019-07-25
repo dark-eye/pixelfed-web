@@ -29,7 +29,7 @@ PageHeader {
 		property var callOnAction: null
 
 		StyleHints {
-			backgroundColor: settings.incognitoMode ? UbuntuColors.purple : theme.palette.normal.background
+			backgroundColor: appSettings.incognitoMode ? UbuntuColors.purple : theme.palette.normal.background
 		}
 		
 
@@ -82,9 +82,9 @@ PageHeader {
 					text: checked ? i18n.tr("Links open externally") : i18n.tr("Links open internally")
 					iconName:checked ? "external-link" : "stock_link"
 					checkable:true
-					checked: settings.openLinksExternally
+					checked: appSettings.openLinksExternally
 					onToggled:{
-						settings.openLinksExternally = checked;
+						appSettings.openLinksExternally = checked;
 						_headersControls.callbackOnAction("external-links");
 					}
 				},
@@ -92,16 +92,16 @@ PageHeader {
 // 					text: checked ? i18n.tr("Show Bottom Controls") : i18n.tr("Hide Bottom Controls")
 // 					iconName:checked ? "select" : "select-undefined"
 // 					checkable:true
-// 					checked: settings.hideBottomControls
+// 					checked: appSettings.hideBottomControls
 // 					onToggled:{
-// 						settings.hideBottomControls = checked;
+// 						appSettings.hideBottomControls = checked;
 // 					}
 // 				},
 				Action {
 					text:i18n.tr("Change Node")
 					iconName:"swap"
 					onTriggered: {
-						settings.instance = undefined
+						appSettings.instance = undefined
 						mainStack.clear();
 						mainStack.push (Qt.resolvedUrl("../pages/InstancePicker.qml"))
 

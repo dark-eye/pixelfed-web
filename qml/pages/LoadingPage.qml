@@ -50,7 +50,7 @@ Item {
 		Label {
 			id: progressLabel
 			color: theme.palette.normal.backgroundText
-			text: i18n.tr('Loading ') + settings.instance
+			text: i18n.tr('Loading ') + appSettings.instance
 			anchors.centerIn: parent
 			textSize: Label.XLarge
 		}
@@ -96,7 +96,7 @@ Item {
 			iconPosition:"left"
 			iconName:"swap"
 			onClicked: {
-				settings.instance = undefined
+				appSettings.instance = undefined
 				mainStack.clear ()
 				mainStack.push (Qt.resolvedUrl("./InstancePicker.qml"))
 			}

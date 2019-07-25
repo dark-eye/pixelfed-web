@@ -1,6 +1,8 @@
-import QtQuick 2.4
+import QtQuick 2.9
 import QtQuick.Layouts 1.1
 import Ubuntu.Components 1.3
+
+import "../components"
 
 Page {
     id: instancePickerPage
@@ -18,53 +20,48 @@ Page {
 		onMessage:instanceList.writeInList (  messageObject.reply );
 	}
 
-    /* Load list of PixelFed Instances from https://instances.social
-    * The Response is in format:
-    * { id, name, added_at, updated_at, checked_at, uptime, up, dead, version,
-    * ipv6, https_score, https_rank, obs_score, obs_rank, users, statuses,
-    * connections, open_registrations, info { short_description, full_description,
-    *      topic, languages[], other_languages_accepted, federates_with,
-    *      prhobited_content[], categories[]}, thumbnail, active_users }
-    */
-    function getSample () {
-		if(searchRunning) { return; }
-		searchRunning = true;
-        var http = new XMLHttpRequest();
-		var  data = 'operationName=Platform&variables={"name":"pixelfed"}&query=query Platform($name: String!) {  platforms(name: $name) {    name    code    displayName    description    tagline    website    icon    __typename  }  nodes(platform: $name) {    id    name    version    openSignups    host    platform {      name      icon      __typename    }    countryCode    countryFlag    countryName    services {      name      __typename    }    __typename  }  statsGlobalToday(platform: $name) {    usersTotal    usersHalfYear    usersMonthly    localPosts    localComments    __typename  }  statsNodes(platform: $name) {    node {      id      __typename    }    usersTotal    usersHalfYear    usersMonthly    localPosts    localComments    __typename  }}';
-		http.open("GET", "https://the-federation.info/graphql?" + data, true);
-        http.setRequestHeader('Content-type', 'text/html; charset=utf-8')
-        http.onreadystatechange = function() {
+	CachedHttpRequest {
+		id:cachedRequest
+
+		url:"https://the-federation.info/graphql"
+		getData: {
+			"operationName" : "Platform",
+			"variables" : '{"name":"pixelfed"}',
+			"query" : "query Platform($name: String!) {  platforms(name: $name) {    name    code    displayName    description    tagline    website    icon    __typename  }  nodes(platform: $name) {    id    name    version    openSignups    host    platform {      name      icon      __typename    }    countryCode    countryFlag    countryName    services {      name      __typename    }    __typename  }  statsGlobalToday(platform: $name) {    usersTotal    usersHalfYear    usersMonthly    localPosts    localComments    __typename  }  statsNodes(platform: $name) {    node {      id      __typename    }    usersTotal    usersHalfYear    usersMonthly    localPosts    localComments    __typename  }}"
+		}
+
+		onResponseDataUpdated : {
 			searchRunning = false;
-            if (http.readyState === XMLHttpRequest.DONE) {
-				console.log(http.responseText);
-				try {
-					var response = JSON.parse(http.responseText);
-					if(response) {
-						for(var j in  response.data.nodes) {
-							response.data.nodes[j].stats= {};
-						for(var i in response.data.statsNodes) {
-								if(response.data.statsNodes[i].node.id == response.data.nodes[j].id ) {
-									response.data.nodes[j].stats = response.data.statsNodes[i];
-								}
-							}
-						}
-						var nodes = response.data.nodes;
-						lastList = nodes;
-						updateTime = Date.now();
-						asyncProcess.sendMessage( {searchTerm : customInstanceInput.displayText , inData : nodes });
+			for(var j in  response.data.nodes) {
+				response.data.nodes[j].stats= {};
+			for(var i in response.data.statsNodes) {
+					if(response.data.statsNodes[i].node.id == response.data.nodes[j].id ) {
+						response.data.nodes[j].stats = response.data.statsNodes[i];
 					}
-				} catch (e) {
-					instancePickerPage.errorOnRequest();
 				}
-            }
-        }
-        http.onerror = function(event) {
+			}
+			var nodes = response.data.nodes;
+			lastList = nodes;
+			updateTime = Date.now();
+			asyncProcess.sendMessage( {searchTerm : customInstanceInput.displayText , inData : nodes });
+		}
+
+		onRequestError: {
+			console.log(errorResults)
 			instancePickerPage.errorOnRequest();
 		}
 
-        loading.running = true;
-		loadingError.visible = false;
-        http.send();
+		onRequestStarted: {
+			loading.running = true;
+			loadingError.visible = false;
+		}
+	}
+
+    function getSample () {
+		if(searchRunning) { return; }
+		searchRunning = true;
+
+		cachedRequest.send("getinstances")
     }
 
     function errorOnRequest() {
@@ -77,7 +74,7 @@ Page {
 		var searchTerm = customInstanceInput.displayText;
 		//If  the  search starts with http(s) then go to the url 
 		if(searchTerm.indexOf("http") == 0 ) {
-			settings.instance = searchTerm
+			appSettings.instance = searchTerm
 			mainStack.push (Qt.resolvedUrl("./PixelFedWebview.qml"))
 			return
 		}
