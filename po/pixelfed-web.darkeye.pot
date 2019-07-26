@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pixelfed-web.darkeye\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-25 08:42+0000\n"
+"POT-Creation-Date: 2019-07-26 08:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,11 +39,11 @@ msgstr ""
 msgid "Search or enter a custom address"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:204
+#: ../qml/pages/InstancePicker.qml:205
 msgid "No results found for search : %1"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:204
+#: ../qml/pages/InstancePicker.qml:205
 msgid "No results returned from server"
 msgstr ""
 
@@ -102,17 +102,17 @@ msgstr ""
 msgid "Open in browser"
 msgstr ""
 
-#: ../qml/components/InstanceItem.qml:28
+#: ../qml/components/InstanceItem.qml:29
 #: ../qml/components/build/tmp/InstanceItem.qml:28
 msgid "Location: %1"
 msgstr ""
 
-#: ../qml/components/InstanceItem.qml:29
+#: ../qml/components/InstanceItem.qml:30
 #: ../qml/components/build/tmp/InstanceItem.qml:29
 msgid "Version %1"
 msgstr ""
 
-#: ../qml/components/InstanceItem.qml:29
+#: ../qml/components/InstanceItem.qml:30
 #: ../qml/components/build/tmp/InstanceItem.qml:29
 msgid " With %1 users"
 msgstr ""

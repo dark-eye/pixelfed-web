@@ -7,6 +7,7 @@ ListItem {
     id: task
 
     property var text: ""
+	property var host : ""
     property var country : ""
     property var version: ""
     property var iconSource: "../../assets/pixelfed_logo.svg"
@@ -17,7 +18,7 @@ ListItem {
     height: layout.height
 
     onClicked: {
-        appSettings.instance = text
+        appSettings.instance = host
 		mainStack.clear();
         mainStack.push (Qt.resolvedUrl("../pages/PixelFedWebview.qml"))
     }
