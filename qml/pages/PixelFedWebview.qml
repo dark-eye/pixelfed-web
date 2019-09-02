@@ -146,7 +146,8 @@ Page {
  		hint.deactivateTimeout:10
 		hint.flickable: webContainer
 		preloadContent: true
-		hint.opacity:  instancBottomEdge.hint.status != BottomEdgeHint.Inactive ? 1 : 0.1
+		hint.text: i18n.tr('Navigation panel')
+ 		hint.opacity:  0.25
 		contentComponent: Component {
 			BottomEdgeControlsHeader {
 				anchors.fill:instancBottomEdge
