@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pixelfed-web.darkeye\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-25 08:42+0000\n"
+"POT-Creation-Date: 2019-09-02 12:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,33 +17,33 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/pages/InstancePicker.qml:96
+#: ../qml/pages/InstancePicker.qml:97
 msgid "Choose a PixelFed instance"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:104
+#: ../qml/pages/InstancePicker.qml:105
 #: ../qml/components/BottomEdgeControlsHeader.qml:74
 #: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:74
 msgid "Info"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:133
+#: ../qml/pages/InstancePicker.qml:134
 msgid "Only show nodes that allow registration"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:151
+#: ../qml/pages/InstancePicker.qml:152
 msgid "Error loading instances nodes"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:162
+#: ../qml/pages/InstancePicker.qml:163
 msgid "Search or enter a custom address"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:204
+#: ../qml/pages/InstancePicker.qml:211
 msgid "No results found for search : %1"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:204
+#: ../qml/pages/InstancePicker.qml:211
 msgid "No results returned from server"
 msgstr ""
 
@@ -85,6 +85,10 @@ msgstr ""
 
 #: ../qml/pages/LoadingPage.qml:53
 msgid "Loading "
+msgstr ""
+
+#: ../qml/pages/PixelFedWebview.qml:149
+msgid "Navigation panel"
 msgstr ""
 
 #: ../qml/components/MainWebView.qml:75
@@ -133,18 +137,15 @@ msgid "Go Back"
 msgstr ""
 
 #: ../qml/components/BottomEdgeControlsHeader.qml:82
-#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:82
-msgid "Links open externally"
+msgid "Deffer Links"
 msgstr ""
 
 #: ../qml/components/BottomEdgeControlsHeader.qml:82
-#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:82
-msgid "Links open internally"
+msgid "Browse Links"
 msgstr ""
 
 #: ../qml/components/BottomEdgeControlsHeader.qml:101
-#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:101
-msgid "Change Node"
+msgid "Change Instance"
 msgstr ""
 
 #: ../qml/components/dialogs/PromptDialog.qml:25
@@ -155,6 +156,18 @@ msgstr ""
 #: ../qml/components/dialogs/ConfirmDialog.qml:25
 #: ../qml/components/build/tmp/dialogs/ConfirmDialog.qml:25
 msgid "Confirm Action"
+msgstr ""
+
+#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:82
+msgid "Links open externally"
+msgstr ""
+
+#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:82
+msgid "Links open internally"
+msgstr ""
+
+#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:101
+msgid "Change Node"
 msgstr ""
 
 #: pixelfed-web.desktop.in.h:1

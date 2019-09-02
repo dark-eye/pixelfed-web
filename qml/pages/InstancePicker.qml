@@ -47,6 +47,7 @@ Page {
 		}
 
 		onRequestError: {
+			searchRunning = false;
 			console.log(errorResults)
 			instancePickerPage.errorOnRequest();
 		}
@@ -69,17 +70,17 @@ Page {
 			loading.visible = false;
 	}
 
-    function search ()  {
+    function search (supportURL)  {
 
 		var searchTerm = customInstanceInput.displayText;
-		//If  the  search starts with http(s) then go to the url 
-		if(searchTerm.indexOf("http") == 0 ) {
+		//If  the  search starts with http(s) then go to the url
+		if(supportURL && searchTerm.indexOf("http://") == 0 ) {
 			appSettings.instance = searchTerm
 			mainStack.push (Qt.resolvedUrl("./PixelFedWebview.qml"))
 			return
 		}
 	
-		if(updateTime < Date.now()-60000) {
+		if(updateTime < Date.now()-60000 || loadingError.visible) {
 			loading.visible = true
 			loadingError.visible = false;
 			instanceList.children = ""
@@ -112,7 +113,7 @@ Page {
                 onTriggered: {
                     if ( customInstanceInput.displayText == "" ) {
                         customInstanceInput.focus = true
-                    } else search ()
+                    } else search (true);
                 }
             }
             ]
@@ -132,7 +133,7 @@ Page {
 				}
 				text: i18n.tr("Only show nodes that allow registration")
 				checked: false;
-				onTriggered:search();
+				onTriggered:search(false);
 			}
 		}
     }
@@ -160,30 +161,35 @@ Page {
         anchors.topMargin: height
         width: parent.width - height
         placeholderText: i18n.tr("Search or enter a custom address")
-		onDisplayTextChanged: if(displayText.length > 2) {search();}
-        Keys.onReturnPressed: search ()
+		onDisplayTextChanged: if(displayText.length > 2) {search(false);}
+        Keys.onReturnPressed: search (true)
     }
     
-    ScrollView {
-        id: scrollView
+	ListView {
+	id: instanceList
         width: parent.width
         height: parent.height - header.height - 3*customInstanceInput.height
         anchors.top: customInstanceInput.bottom
         anchors.topMargin: customInstanceInput.height
-        contentItem: Column {
-            id: instanceList
-            width: root.width
-
-
+		model: []
+		delegate: InstanceItem {
+			text:modelData.text
+			country:modelData.country
+			version: modelData.version
+			users: modelData.users
+			iconSource: modelData.iconSource
+			status: modelData.status
+			rating: modelData.rating
+		}
             // Write a list of instances to the ListView
             function writeInList ( list ) {
-                instanceList.children = ""
+			var newModel = []
                 loading.visible = false
-				loadingError.visible = false;
+		loadingError.visible = false;
                 list.sort(function(a,b) {return !a.stats.usersTotal ? (!b.stats.usersTotal ? 0 : 1) : (!b.stats.usersTotal ? -1 : parseFloat(b.stats.usersTotal) - parseFloat(a.stats.usersTotal));});
                 for ( var i = 0; i < list.length; i++ ) {
-                    var item = Qt.createComponent("../components/InstanceItem.qml")
-                    item.createObject(this, {
+                    newModel.push(
+				 {
                         "text": list[i].name,
                         "country": list[i].countryName != null ? list[i].countryName : "",
                         "version": list[i].version != null ? list[i].version : "",
@@ -193,14 +199,15 @@ Page {
 						"rating":  list[i].score != null ? list[i].score : 0
                     })
                 }
+			instanceList.model = newModel;
             }
-        }
+
     }
     
     Label {
 		id:noResultsLabel
 		visible: !instanceList.children.length && !loading.visible && !loadingError.visible
-		anchors.centerIn: scrollView;
+		anchors.centerIn: instanceList;
 		text:customInstanceInput.length ? i18n.tr("No results found for search : %1").arg(customInstanceInput.displayText) :  i18n.tr("No results returned from server");
 	}
 

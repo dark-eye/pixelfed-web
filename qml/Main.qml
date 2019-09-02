@@ -45,8 +45,7 @@ MainView {
     Component.onCompleted: {
         if ( appSettings.instance ) {
            mainStack.push(Qt.resolvedUrl("./pages/PixelFedWebview.qml"))
-        }
-        else {
+        } else {
             mainStack.push(Qt.resolvedUrl("./pages/InstancePicker.qml"))
         }
     }

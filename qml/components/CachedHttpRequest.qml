@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.9
+import U1db 1.0 as U1db
 
 Item {
    id:_cachedHttpReq
@@ -29,14 +30,22 @@ Item {
    property var postData: null
    property var getData: null
    property bool isResultJSON: true
+   property int cachingTimeMiliSec: 600000 // 10 minutes
+   property real recachingFactor: 0.95 // how much (percentage wise) of the caching time can pass before trying sending the response again.
 
    function send(id) {
-		//check DB if theres old
-			// If so send  resultsUpdated withthe stored getData
+	   var requestURL = url + (getData ? "?" + _internal.mapJsonToRequest(getData) : "");
+
+
+		if(_internal.retriveFromCache(requestURL,id) < recachingFactor) {
+			// we have the cached response no need to  query the server again
+			return;
+		}
+
+
 		// Send request to the configured URL
 		var http = new XMLHttpRequest();
-		var requestURL = url +
-						 (getData ? "?" + _internal.mapJsonToRequest(getData) : "");
+
 		console.log("CachedHttpRequest request URL:"+requestURL);
  		http.open("GET", requestURL, true);
  		http.setRequestHeader('Content-type', 'text/html; charset=utf-8')
@@ -47,32 +56,89 @@ Item {
 						if(_cachedHttpReq.isResultJSON) {
 							var response = JSON.parse(http.responseText);
 							if(response) {
+								console.log("CachedHttpRequest: got response for: "+ requestURL +" , associated id : "+id);
+								// Update DB with the new results and add the current timestamp to it
+								var docId = cachedReqDbInstance.putDoc({"request":requestURL,"response": http.responseText,"timestamp":Date.now(),"isResultJSON":_cachedHttpReq.isResultJSON});
+								console.log("CachedHttpRequest: cached response to  :"+docId);
 								responseDataUpdated(response, id);
 							}
 						} else {
+							console.log("CachedHttpRequest: got response for: "+ requestURL +" , associated id : "+id);
+							// Update DB with the new results and add the current timestamp to it
+							var docId = cachedReqDbInstance.putDoc({"request":requestURL,"response": http.responseText,"timestamp":Date.now(),"isResultJSON":_cachedHttpReq.isResultJSON});
+							console.log("CachedHttpRequest: cached response to  :"+docId);
+							// On returned results fire resultsUpdated
 							resultsUpdated(http.responseText, id);
 						}
 					} catch (error) {
+						console.log("CachedHttpRequest: got error when quering: "+ requestURL +" , associated id : "+id );
 						requestError(error, http.responseText, id);
 					}
 				}
 			}
+
+			// On Error send requestError signal
 			http.onerror = function(event) {
 				requestError(event,http.responseText, id);
 			}
 
 			//Send Request
  			http.send();
+			//update the  sending app that  we are queiring for the request
  			requestStarted(http.request,id)
-			// On returned results fire resultsUpdated
-				// Update DB with the new results and add the current timestamp to it
-			// On Error send requestError signal
    }
 
-   QtObject {
+	//---------------------------------------------------
+
+	U1db.Database {
+		id:cachedReqDbInstance
+		path: "cached-requests-db"
+	}
+
+	U1db.Index {
+		id:requestIndex
+		database:cachedReqDbInstance
+			name:"requestIndex"
+			expression: [ "request" ]
+		}
+	U1db.Query {
+		id:getPreviousResponses
+		index: requestIndex
+		query: ["*"]
+	}
+
+	//---------------------------------------------------
+
+	QtObject {
 	   id:_internal
 
-	   function mapJsonToRequest(json) {
+		// check if we allread have a response to a give request/query in the cache and send an update if we have it.
+	   function retriveFromCache(requestURL, id) {
+			//check DB if theres a cache response for the requested URL
+		   console.log(requestURL)
+			getPreviousResponses.query = [ requestURL ]
+			if(getPreviousResponses.results.length) {
+				for(var i in getPreviousResponses.documents) {
+					var prvResponse = cachedReqDbInstance.getDoc(getPreviousResponses.documents[i]);
+					var howOld = Date.now() - prvResponse.timestamp;
+					console.log(cachingTimeMiliSec, howOld)
+					if( cachingTimeMiliSec > howOld ) {
+						// If so send  resultsUpdated withthe stored getData
+						console.log("CachedHttpRequest: Loading response for: "+ requestURL +" from cache" );
+						var response = prvResponse.isResultJSON ? JSON.parse(prvResponse.response) : prvResponse.response;
+						_cachedHttpReq.responseDataUpdated(response,id);
+						return howOld/cachingTimeMiliSec;
+					} else {
+						//If the response if too old delete it
+						console.log("CachedHttpRequest: Timestamp too old : "+  prvResponse.timestamp +" to load from cache" );
+						cachedReqDbInstance.deleteDoc(getPreviousResponses.documents[i]);
+					}
+				}
+			}
+			return 1;
+	   }
+
+		function mapJsonToRequest(json) {
 		    var retStr="";
 			for(var i in json) {
 				if(typeof(json[i]) == "object") {
@@ -85,5 +151,5 @@ Item {
 
 			return retStr;
 	   }
-   }
+	}
 }

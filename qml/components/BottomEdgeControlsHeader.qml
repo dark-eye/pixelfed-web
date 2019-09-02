@@ -79,7 +79,7 @@ PageHeader {
 					}
 				},
 				Action {
-					text: checked ? i18n.tr("Links open externally") : i18n.tr("Links open internally")
+					text: checked ? i18n.tr("Deffer Links") : i18n.tr("Browse Links")
 					iconName:checked ? "external-link" : "stock_link"
 					checkable:true
 					checked: appSettings.openLinksExternally
@@ -98,7 +98,7 @@ PageHeader {
 // 					}
 // 				},
 				Action {
-					text:i18n.tr("Change Node")
+					text:i18n.tr("Change Instance")
 					iconName:"swap"
 					onTriggered: {
 						appSettings.instance = undefined
