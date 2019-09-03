@@ -30,7 +30,7 @@ Item {
    property var postData: null
    property var getData: null
    property bool isResultJSON: true
-   property int cachingTimeMiliSec: 600000 // 10 minutes
+   property int cachingTimeMiliSec: 3600000 // 1 hour
    property real recachingFactor: 0.95 // how much (percentage wise) of the caching time can pass before trying sending the response again.
 
    function send(id) {

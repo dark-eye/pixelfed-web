@@ -42,7 +42,9 @@ Page {
 			}
 			var nodes = response.data.nodes;
 			lastList = nodes;
-			updateTime = Date.now();
+			if(nodes.length) {
+				updateTime = Date.now();
+			}
 			asyncProcess.sendMessage( {searchTerm : customInstanceInput.displayText , inData : nodes });
 		}
 
@@ -180,6 +182,12 @@ Page {
 			iconSource: modelData.iconSource
 			status: modelData.status
 			rating: modelData.rating
+
+			onClicked: {
+				appSettings.instance = text
+				mainStack.clear();
+				mainStack.push (Qt.resolvedUrl("../pages/PixelFedWebview.qml"))
+			}
 		}
             // Write a list of instances to the ListView
             function writeInList ( list ) {

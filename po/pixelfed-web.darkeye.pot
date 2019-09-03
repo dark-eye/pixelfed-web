@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pixelfed-web.darkeye\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-02 12:02+0000\n"
+"POT-Creation-Date: 2019-09-03 16:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,33 +17,33 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/pages/InstancePicker.qml:97
+#: ../qml/pages/InstancePicker.qml:99
 msgid "Choose a PixelFed instance"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:105
+#: ../qml/pages/InstancePicker.qml:107
 #: ../qml/components/BottomEdgeControlsHeader.qml:74
 #: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:74
 msgid "Info"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:134
+#: ../qml/pages/InstancePicker.qml:136
 msgid "Only show nodes that allow registration"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:152
+#: ../qml/pages/InstancePicker.qml:154
 msgid "Error loading instances nodes"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:163
+#: ../qml/pages/InstancePicker.qml:165
 msgid "Search or enter a custom address"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:211
+#: ../qml/pages/InstancePicker.qml:219
 msgid "No results found for search : %1"
 msgstr ""
 
-#: ../qml/pages/InstancePicker.qml:211
+#: ../qml/pages/InstancePicker.qml:219
 msgid "No results returned from server"
 msgstr ""
 
@@ -106,17 +106,17 @@ msgstr ""
 msgid "Open in browser"
 msgstr ""
 
-#: ../qml/components/InstanceItem.qml:28
+#: ../qml/components/InstanceItem.qml:22
 #: ../qml/components/build/tmp/InstanceItem.qml:28
 msgid "Location: %1"
 msgstr ""
 
-#: ../qml/components/InstanceItem.qml:29
+#: ../qml/components/InstanceItem.qml:23
 #: ../qml/components/build/tmp/InstanceItem.qml:29
 msgid "Version %1"
 msgstr ""
 
-#: ../qml/components/InstanceItem.qml:29
+#: ../qml/components/InstanceItem.qml:23
 #: ../qml/components/build/tmp/InstanceItem.qml:29
 msgid " With %1 users"
 msgstr ""

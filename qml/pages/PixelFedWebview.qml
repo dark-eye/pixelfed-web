@@ -90,30 +90,30 @@ Page {
 	
 
 	ProgressBar {
-			id: _bottomProgressBar
-			z:2
-			anchors.bottom:instancBottomEdge.status !== BottomEdge.Committed ? parent.bottom : instancBottomEdge.top
-			anchors.bottomMargin: 1
-			width: instancBottomEdge.width
+		id: _bottomProgressBar
+		z:2
+		anchors.bottom:instancBottomEdge.status !== BottomEdge.Committed ? parent.bottom : instancBottomEdge.top
+		anchors.bottomMargin: 1
+		width: instancBottomEdge.width
 
-			visible: webviewPage.currentView().visible && webviewPage.currentView().loading
+		visible: webviewPage.currentView().visible && webviewPage.currentView().loading
 
-			value:  webviewPage.currentView().loadProgress
-			indeterminate: value == 0
-			minimumValue: 0
-			maximumValue: 100
-			StyleHints {
-				foregroundColor: loadingPage.hasLoadError ?
-									theme.palette.normal.negative :
-									theme.palette.normal.progress
-			}
-			layer.enabled: true
-			layer.effect:DropShadow {
-				radius: 5
-				transparentBorder:true
-				color:theme.palette.highlighted.selected
-			}
+		value:  webviewPage.currentView().loadProgress
+		indeterminate: value == 0
+		minimumValue: 0
+		maximumValue: 100
+		StyleHints {
+			foregroundColor: loadingPage.hasLoadError ?
+								theme.palette.normal.negative :
+								theme.palette.normal.progress
 		}
+		layer.enabled: true
+		layer.effect:DropShadow {
+			radius: 5
+			transparentBorder:true
+			color:theme.palette.highlighted.selected
+		}
+	}
 
 	InverseMouseArea {
 		anchors {
@@ -122,8 +122,8 @@ Page {
 			right:parent.right
 		}
 		height:units.gu(25)
-		enabled:instancBottomEdge.status != BottomEdge.Hidden
-		visible:enabled
+		enabled:instancBottomEdge.status == BottomEdge.Committed
+		visible:true
 		topmostItem:true
 		onClicked:instancBottomEdge.collapse();
 	}
@@ -143,11 +143,11 @@ Page {
 		height:units.gu(7)
 		hint.iconName: "go-down"
 		hint.visible:visible
- 		hint.deactivateTimeout:10
+//  		hint.deactivateTimeout:100
 		hint.flickable: webContainer
-		preloadContent: true
+		//preloadContent: true
 		hint.text: i18n.tr('Navigation panel')
- 		hint.opacity:  0.25
+  		hint.opacity:  0.25
 		contentComponent: Component {
 			BottomEdgeControlsHeader {
 				anchors.fill:instancBottomEdge
@@ -174,7 +174,7 @@ Page {
 	}
 	
 	function  isOnMainSite() {
-		return (currentView().url.toString().indexOf(appSettings.instance) !== -1)
+		return appSettings.instance && (currentView().url.toString().indexOf(appSettings.instance) !== -1)
 	}
 	
 	function isLoggedin() {
