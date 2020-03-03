@@ -71,7 +71,7 @@ Page {
 
     function search ()  {
 
-		var searchTerm = customInstanceInput.displayText;
+		var searchTerm = customInstanceInput.displayText.toLowerCase();
 		//If  the  search starts with http(s) then go to the url 
 		if(searchTerm.indexOf("http") == 0 ) {
 			appSettings.instance = searchTerm
@@ -160,8 +160,7 @@ Page {
         anchors.topMargin: height
         width: parent.width - height
         placeholderText: i18n.tr("Search or enter a custom address")
-		onDisplayTextChanged: if(displayText.length > 2) {search();}
-        Keys.onReturnPressed: search ()
+        Keys.onReturnPressed: search()
     }
     
     ScrollView {
