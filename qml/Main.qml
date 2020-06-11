@@ -17,8 +17,6 @@ MainView {
 
     readonly property var version: "0.1.0"
 
-    property var token: "4r45tg"
-
     // automatically anchor items to keyboard that are anchored to the bottom
     anchorToKeyboard: true
 

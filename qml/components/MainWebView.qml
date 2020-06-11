@@ -144,6 +144,14 @@ WebEngineView {
 
 	}
 
+	onFullScreenRequested: function(request) {
+// 		if (request.toggleOn)
+// 			Qt.application.showFullScreen()
+// 		else
+// 			Qt.application.showNormal()
+		request.accept()
+	}
+
 
 	function goHome() {
 		webView.url = helperFunctions.getInstanceURL();

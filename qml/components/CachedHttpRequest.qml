@@ -32,6 +32,7 @@ Item {
    property bool isResultJSON: true
    property int cachingTimeMiliSec: 3600000 // 1 hour
    property real recachingFactor: 0.95 // how much (percentage wise) of the caching time can pass before trying sending the response again.
+   property bool returnOldResultsOnError:false // Return old results in case of error, Note that we will notify on an error first
 
    function send(id) {
 	   var requestURL = url + (getData ? "?" + _internal.mapJsonToRequest(getData) : "");
@@ -70,9 +71,15 @@ Item {
 							// On returned results fire resultsUpdated
 							resultsUpdated(http.responseText, id);
 						}
+						if(returnOldResultsOnError) {
+							_internal.deleteOldDocsFromCache(requestURL, id);
+						}
 					} catch (error) {
 						console.log("CachedHttpRequest: got error when quering: "+ requestURL +" , associated id : "+id );
 						requestError(error, http.responseText, id);
+						if(returnOldResultsOnError) {
+							_internal.retriveFromCache(requestURL, id, true);
+						}
 					}
 				}
 			}
@@ -80,6 +87,9 @@ Item {
 			// On Error send requestError signal
 			http.onerror = function(event) {
 				requestError(event,http.responseText, id);
+				if(returnOldResultsOnError) {
+					_internal.retriveFromCache(requestURL, id, true);
+				}
 			}
 
 			//Send Request
@@ -112,8 +122,10 @@ Item {
 	QtObject {
 	   id:_internal
 
-		// check if we allread have a response to a give request/query in the cache and send an update if we have it.
-	   function retriveFromCache(requestURL, id) {
+		/**
+		 * Check if we allready have a response to a give request/query in the cache and send an update if we have it.
+		 **/
+	   function retriveFromCache(requestURL, id, ignoreTimeout) {
 			//check DB if theres a cache response for the requested URL
 		   console.log(requestURL)
 			getPreviousResponses.query = [ requestURL ]
@@ -121,14 +133,13 @@ Item {
 				for(var i in getPreviousResponses.documents) {
 					var prvResponse = cachedReqDbInstance.getDoc(getPreviousResponses.documents[i]);
 					var howOld = Date.now() - prvResponse.timestamp;
-					console.log(cachingTimeMiliSec, howOld)
-					if( cachingTimeMiliSec > howOld ) {
+					if( cachingTimeMiliSec > howOld || ignoreTimeout ) {
 						// If so send  resultsUpdated withthe stored getData
 						console.log("CachedHttpRequest: Loading response for: "+ requestURL +" from cache" );
 						var response = prvResponse.isResultJSON ? JSON.parse(prvResponse.response) : prvResponse.response;
 						_cachedHttpReq.responseDataUpdated(response,id);
 						return howOld/cachingTimeMiliSec;
-					} else {
+					} else if(!returnOldResultsOnError){
 						//If the response if too old delete it
 						console.log("CachedHttpRequest: Timestamp too old : "+  prvResponse.timestamp +" to load from cache" );
 						cachedReqDbInstance.deleteDoc(getPreviousResponses.documents[i]);
@@ -136,6 +147,26 @@ Item {
 				}
 			}
 			return 1;
+	   }
+		/**
+		 *  Delete old  document in the cache
+		 **/
+		function deleteOldDocsFromCache(requestURL, id) {
+			//check DB if theres a cache response for the requested URL
+			var deleteCount =0 ;
+			getPreviousResponses.query = [ requestURL ]
+			if(getPreviousResponses.results.length) {
+				for(var i in getPreviousResponses.documents) {
+					var prvResponse = cachedReqDbInstance.getDoc(getPreviousResponses.documents[i]);
+					var howOld = Date.now() - prvResponse.timestamp;
+					if( cachingTimeMiliSec < howOld  ) {
+						deleteCount++;
+						console.log("CachedHttpRequest: Timestamp too old : "+  prvResponse.timestamp +" to load from cache" );
+						cachedReqDbInstance.deleteDoc(getPreviousResponses.documents[i]);
+					}
+				}
+			}
+			return deleteCount;
 	   }
 
 		function mapJsonToRequest(json) {
