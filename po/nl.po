@@ -1,0 +1,163 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the pixelfed-web.darkeye package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pixelfed-web.darkeye\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-25 08:42+0000\n"
+"PO-Revision-Date: 2020-10-04 14:04+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl\n"
+
+#: ../qml/pages/InstancePicker.qml:96
+msgid "Choose a PixelFed instance"
+msgstr "Kies een PixelFed-instantie"
+
+#: ../qml/pages/InstancePicker.qml:104
+#: ../qml/components/BottomEdgeControlsHeader.qml:74
+#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:74
+msgid "Info"
+msgstr "Informatie"
+
+#: ../qml/pages/InstancePicker.qml:133
+msgid "Only show nodes that allow registration"
+msgstr "Alleen servers tonen die registratie toestaan"
+
+#: ../qml/pages/InstancePicker.qml:151
+msgid "Error loading instances nodes"
+msgstr "Fout tijdens laden van instanties"
+
+#: ../qml/pages/InstancePicker.qml:162
+msgid "Search or enter a custom address"
+msgstr "Zoek of voer een aangepast adres in"
+
+#: ../qml/pages/InstancePicker.qml:204
+msgid "No results found for search : %1"
+msgstr "Geen resultaten voor zoekopdracht '%1'"
+
+#: ../qml/pages/InstancePicker.qml:204
+msgid "No results returned from server"
+msgstr "Geen resultaten gevonden op de server"
+
+#: ../qml/pages/Information.qml:8
+msgid "About"
+msgstr "Over"
+
+#: ../qml/pages/Information.qml:17
+msgid "Based on uMastonauts webapp"
+msgstr "Gebaseerd op uMastonauts-webapp"
+
+#: ../qml/pages/Information.qml:18
+msgid "Get the source"
+msgstr "Broncode bekijken"
+
+#: ../qml/pages/Information.qml:19
+msgid "Report issues"
+msgstr "Problemen melden"
+
+#: ../qml/pages/Information.qml:20
+msgid "GNU General Public License v3.0"
+msgstr "GNU General Public License v3"
+
+#: ../qml/pages/Information.qml:21
+msgid "Contributors"
+msgstr "Bijdragers"
+
+#: ../qml/pages/Information.qml:22
+msgid "Donate"
+msgstr "Doneren"
+
+#: ../qml/pages/Information.qml:23
+msgid "Telegram"
+msgstr "Telegram"
+
+#: ../qml/pages/Information.qml:53
+msgid "uPixelFed WebApp"
+msgstr "uPixelFed-webapp"
+
+#: ../qml/pages/LoadingPage.qml:53
+msgid "Loading "
+msgstr "Bezig met laden "
+
+#: ../qml/components/MainWebView.qml:75
+#: ../qml/components/build/tmp/MainWebView.qml:76
+msgid "Copy Link"
+msgstr "Link kopiëren"
+
+#: ../qml/components/MainWebView.qml:82
+#: ../qml/components/build/tmp/MainWebView.qml:83
+msgid "Copy Image"
+msgstr "Afbeelding kopiëren"
+
+#: ../qml/components/MainWebView.qml:88
+#: ../qml/components/build/tmp/MainWebView.qml:89
+msgid "Open in browser"
+msgstr "Openen in webbrowser"
+
+#: ../qml/components/InstanceItem.qml:28
+#: ../qml/components/build/tmp/InstanceItem.qml:28
+msgid "Location: %1"
+msgstr "Locatie: %1"
+
+#: ../qml/components/InstanceItem.qml:29
+#: ../qml/components/build/tmp/InstanceItem.qml:29
+msgid "Version %1"
+msgstr "Versie %1"
+
+#: ../qml/components/InstanceItem.qml:29
+#: ../qml/components/build/tmp/InstanceItem.qml:29
+msgid " With %1 users"
+msgstr " met %1 gebruikers"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:47
+#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:47
+msgid "Go home"
+msgstr "Startpagina"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:56
+#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:56
+msgid "Reload"
+msgstr "Herladen"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:64
+#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:64
+msgid "Go Back"
+msgstr "Ga terug"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:82
+#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:82
+msgid "Links open externally"
+msgstr "Links extern openen"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:82
+#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:82
+msgid "Links open internally"
+msgstr "Links intern openen"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:101
+#: ../qml/components/build/tmp/BottomEdgeControlsHeader.qml:101
+msgid "Change Node"
+msgstr "Andere instantie kiezen"
+
+#: ../qml/components/dialogs/PromptDialog.qml:25
+#: ../qml/components/build/tmp/dialogs/PromptDialog.qml:25
+msgid "Prompt Action"
+msgstr "Kies een actie"
+
+#: ../qml/components/dialogs/ConfirmDialog.qml:25
+#: ../qml/components/build/tmp/dialogs/ConfirmDialog.qml:25
+msgid "Confirm Action"
+msgstr "Actie bevestigen"
+
+#: pixelfed-web.desktop.in.h:1
+msgid "uPixelFed"
+msgstr "uPixelFed"
