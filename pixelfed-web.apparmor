@@ -5,6 +5,7 @@
         "video",
         "content_exchange",
         "content_exchange_source",
+        "connectivity",
         "webview"
     ],
     "policy_version": 16.04

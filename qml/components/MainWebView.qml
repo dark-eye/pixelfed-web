@@ -25,6 +25,7 @@ import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
 import QtGraphicalEffects 1.0
 import QtWebEngine 1.7
+import Ubuntu.DownloadManager 1.2
 
 WebEngineView {
 	id: webView
@@ -43,6 +44,7 @@ WebEngineView {
 	onLoadProgressChanged: {
 		//visible |= !loading
 	}
+	
 
 	onLoadingChanged:{
 		lastStatus = loadRequest.status
@@ -68,31 +70,81 @@ WebEngineView {
 			}
 		}
 	}
+	
+	DownloadManager {
+        id: dlManager
+        autoStart:true
+        onDownloadFinished: {
+        }
+    }
 
+    Component {
+        id: singleDownloadComponent
+        SingleDownload {
+            id: singleDownloadObject
+            property string image
+            property string title
+            metadata: Metadata {
+                showInIndicator: true
+                title: singleDownloadObject.title
+                custom: { "image" : singleDownloadObject.image }
+            }
+        }
+    }
+	
+	property var contextRequestItem: null
 	property var  contextualActions: ActionList {
+        Action {
+			id: selectionAction
+			text: i18n.tr("Copy Selection")
+			enabled: webView.contextRequestItem.selectedText.toString()
+			onTriggered: Clipboard.push([webView.contextRequestItem.selectedText])
+		}
 		Action {
 			id: linkAction
 			text: i18n.tr("Copy Link")
-			enabled: webView.contextualData.href.toString()
-			onTriggered: Clipboard.push([webView.contextualData.href])
+			enabled: webView.contextRequestItem.linkUrl.toString()
+			onTriggered: Clipboard.push([webView.contextRequestItem.linkUrl])
 		}
 
 		Action {
 			id: imageAction
 			text: i18n.tr("Copy Image")
-			enabled: webView.contextualData.img.toString()
-			onTriggered: Clipboard.push([webView.contextualData.img])
+			enabled: webView.contextRequestItem.mediaUrl .toString()
+			onTriggered: Clipboard.push([webView.contextRequestItem.mediaUrl ])
+		}
+		
+		Action {
+			id: dlImageAction
+			text: i18n.tr("Download Image")
+			enabled: webView.contextRequestItem.mediaUrl .toString()
+            onTriggered: {
+                    var singleDownload =  singleDownloadComponent.createObject(webView, {"image": "assets/logo.svg", "title": webView.contextRequestItem.linkText, allowMobileDownload : true, showInIndicator :true })
+                    singleDownload.download(webView.contextRequestItem.mediaUrl)
+            }
 		}
 
 		Action {
 			text: i18n.tr("Open in browser")
-			enabled: webView.contextualData.href.toString()
-			onTriggered: linkAction.enabled ? Qt.openUrlExternally( webView.contextualData.href ) : Qt.openUrlExternally( webView.contextualData.img )
+			enabled: webView.contextRequestItem.href.toString()
+			onTriggered: linkAction.enabled ? Qt.openUrlExternally( webView.contextRequestItem.linkUrl ) :
+                                              Qt.openUrlExternally( webView.contextRequestItem.mediaUrl  )
 		}
 	}
 
-	property var contextualMenu: ActionSelectionPopover {
+   ActionSelectionPopover {
+        id: contextualMenu
+        z:100
+	}
+ 
+    onContextMenuRequested: {
+		request.accepted = true;
+        contextRequestItem = request;
+		contextualMenu.show();
+	}
 
+	onContextualActionsChanged: {
+		contextualMenu.actions = contextualActions;
 	}
 
 	Component.onCompleted: {
@@ -124,14 +176,7 @@ WebEngineView {
 			var  pickerInstance = filePicker.createObject(webView,{model:fakeModel});
 	}
 
-	onContextMenuRequested: {
-		request.accepted = true;
-		contextualMenu.show();
-	}
 
-	onContextualActionsChanged: {
-		contextualMenu.actions = contextualActions;
-	}
 
 	onQuotaRequested:{
 		if(request.requestedSize < 2^24) {
