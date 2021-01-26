@@ -106,14 +106,14 @@ PageHeader {
 						mainStack.push (Qt.resolvedUrl("../pages/InstancePicker.qml"))
 
 					}	
-				},
-				Action {
-					text:i18n.tr("Download location")
-					iconName:"save"
-					onTriggered: {
-                        Qt.openUrlExternally( "file:///home/phablet/.local/share/ubuntu-download-manager/pixelfed-web.darkeye" )
-					}	
-				}
+				}//,
+				//Action {
+					//text:i18n.tr("Download location")
+					//iconName:"save"
+					//onTriggered: {
+                        //Qt.openUrlExternally( "file:///home/phablet/.local/share/ubuntu-download-manager/pixelfed-web.darkeye" )
+					//}	
+				//}
 			]
 		}
 	}
