@@ -4,4 +4,6 @@ Exec=qmlscene qml/Main.qml
 Icon=assets/logo.svg
 Terminal=false
 Type=Application
+X-Ubuntu-Splash-Image=assets/splash.svg
+X-Ubuntu-Splash-Color=#121212
 X-Ubuntu-Touch=true

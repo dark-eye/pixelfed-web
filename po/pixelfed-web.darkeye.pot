@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pixelfed-web.darkeye\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-06 10:04+0000\n"
+"POT-Creation-Date: 2021-02-24 18:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,7 +62,7 @@ msgid "Choose a PixelFed instance"
 msgstr ""
 
 #: ../qml/pages/InstancePicker.qml:104
-#: ../qml/components/BottomEdgeControlsHeader.qml:74
+#: ../qml/components/BottomEdgeControlsHeader.qml:92
 msgid "Info"
 msgstr ""
 
@@ -126,31 +126,35 @@ msgstr ""
 msgid "Confirm Action"
 msgstr ""
 
-#: ../qml/components/BottomEdgeControlsHeader.qml:47
-msgid "Go home"
-msgstr ""
-
-#: ../qml/components/BottomEdgeControlsHeader.qml:56
-msgid "Reload"
+#: ../qml/components/BottomEdgeControlsHeader.qml:55
+msgid "Open Externally"
 msgstr ""
 
 #: ../qml/components/BottomEdgeControlsHeader.qml:64
+msgid "Go home"
+msgstr ""
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:74
+msgid "Reload"
+msgstr ""
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:82
 msgid "Go Back"
 msgstr ""
 
-#: ../qml/components/BottomEdgeControlsHeader.qml:82
+#: ../qml/components/BottomEdgeControlsHeader.qml:100
 msgid "Links open externally"
 msgstr ""
 
-#: ../qml/components/BottomEdgeControlsHeader.qml:82
+#: ../qml/components/BottomEdgeControlsHeader.qml:100
 msgid "Links open internally"
 msgstr ""
 
-#: ../qml/components/BottomEdgeControlsHeader.qml:101
+#: ../qml/components/BottomEdgeControlsHeader.qml:119
 msgid "Change Node"
 msgstr ""
 
-#: ../qml/components/BottomEdgeControlsHeader.qml:111
+#: ../qml/components/BottomEdgeControlsHeader.qml:129
 msgid "Download location"
 msgstr ""
 
