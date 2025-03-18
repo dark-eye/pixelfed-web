@@ -2,8 +2,8 @@
 import QtQml 2.2
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Ubuntu.Components 1.3
-import Ubuntu.Components.Popups 1.3
+import Lomiri.Components 1.3
+import Lomiri.Components.Popups 1.3
 import QtGraphicalEffects 1.0
 import QtWebEngine 1.7
 
@@ -34,6 +34,7 @@ Page {
 			bottom: parent.bottom
 			bottomMargin: instancBottomEdge.hint.status == BottomEdgeHint.Locked  ? units.gu(6) : 0;
 		}
+		interactive: false
 		MainWebView {
 			id:webView
 			url: helperFunctions.getInstanceURL()
@@ -83,7 +84,7 @@ Page {
 
 		visible: opacity != 0
 		opacity: !webviewPage.currentView().isLoaded ? 1 : 0
-		Behavior on opacity { NumberAnimation { duration:UbuntuAnimation.BriskDuration} }
+		Behavior on opacity { NumberAnimation { duration:LomiriAnimation.BriskDuration} }
 
 		onReloadButtonPressed: webviewPage.currentView().reload();
 	}
@@ -134,7 +135,7 @@ Page {
 		visible: opacity != 0
 		color:theme.palette.normal.overlay
 		opacity: instancBottomEdge.status != BottomEdge.Hidden ? 0.33 : 0
-		Behavior on opacity { NumberAnimation { duration:UbuntuAnimation.BriskDuration} }
+		Behavior on opacity { NumberAnimation { duration:LomiriAnimation.BriskDuration} }
 	}
 
 	BottomEdge {

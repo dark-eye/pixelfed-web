@@ -21,11 +21,11 @@
 
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Ubuntu.Components 1.3
-import Ubuntu.Components.Popups 1.3
+import Lomiri.Components 1.3
+import Lomiri.Components.Popups 1.3
 import QtGraphicalEffects 1.0
 import QtWebEngine 1.7
-import Ubuntu.DownloadManager 1.2
+import Lomiri.DownloadManager 1.2
 
 WebEngineView {
 	id: webView
@@ -75,6 +75,15 @@ WebEngineView {
         id: dlManager
         autoStart:true
         onDownloadFinished: {
+            console.log(path)
+            for ( var i in dlManager.downloads ) {
+                for ( var j in dlManager.downloads[i] ) {
+                    console.log(j,dlManager.downloads[i][j])
+                }
+                for ( var x in dlManager ) {
+                    console.log(x,dlManager[x])
+                }
+            }
         }
     }
 

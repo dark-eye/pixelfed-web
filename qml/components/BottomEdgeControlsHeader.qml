@@ -20,14 +20,22 @@
  */
 
 import QtQuick 2.4
-import Ubuntu.Components 1.3
+import Lomiri.Components 1.3
 
 PageHeader {
 		id:_headersControls
 		
-		property var trailingSlots: !webviewPage.isOnMainSite() ? 4 : 3
+		property var trailingSlots: !webviewPage.isOnMainSite() ? 5 : 3
 		property var callOnAction: null
 
+		signal home();
+        signal openExternally();
+        signal info();
+        signal reload();
+        signal back();
+        signal toggleExternalOpen();
+        signal changeNode();
+		
 		StyleHints {
 			backgroundColor: appSettings.incognitoMode ? UbuntuColors.purple : theme.palette.normal.background
 		}
@@ -43,6 +51,15 @@ PageHeader {
 			numberOfSlots: trailingSlots
 			
 			actions:[
+                Action {
+					text:i18n.tr("Open Externally")
+					iconName:"external-link"
+					onTriggered: {
+						Qt.openUrlExternally(webviewPage.currentView().url);
+						//_headersControls.callbackOnAction("home");
+					}
+					visible:!webviewPage.isOnMainSite()
+				},
 				Action {
 					text:i18n.tr("Go home")
 					iconName:"home"
@@ -52,6 +69,7 @@ PageHeader {
 					}
 					visible:!webviewPage.isOnMainSite()
 				},
+                // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 				Action {
 					text:i18n.tr("Reload")
 					iconName:"reload"
@@ -106,14 +124,14 @@ PageHeader {
 						mainStack.push (Qt.resolvedUrl("../pages/InstancePicker.qml"))
 
 					}	
-				}//,
-				//Action {
-					//text:i18n.tr("Download location")
-					//iconName:"save"
-					//onTriggered: {
-                        //Qt.openUrlExternally( "file:///home/phablet/.local/share/ubuntu-download-manager/pixelfed-web.darkeye" )
-					//}	
-				//}
+				},
+				Action {
+					text:i18n.tr("Download location")
+					iconName:"save"
+					onTriggered: {
+                        Qt.openUrlExternally( "file:///home/phablet/.local/share/ubuntu-download-manager/pixelfed-web.darkeye" )
+					}	
+				}
 			]
 		}
 	}

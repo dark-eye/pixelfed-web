@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pixelfed-web.darkeye\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-24 18:47+0000\n"
+"POT-Creation-Date: 2025-03-16 20:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,83 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:55
+msgid "Open Externally"
+msgstr ""
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:64
+msgid "Go home"
+msgstr ""
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:74
+msgid "Reload"
+msgstr ""
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:82
+msgid "Go Back"
+msgstr ""
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:92
+#: ../qml/pages/InstancePicker.qml:104
+msgid "Info"
+msgstr ""
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:100
+msgid "Links open externally"
+msgstr ""
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:100
+msgid "Links open internally"
+msgstr ""
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:119
+msgid "Change Node"
+msgstr ""
+
+#: ../qml/components/BottomEdgeControlsHeader.qml:129
+msgid "Download location"
+msgstr ""
+
+#: ../qml/components/InstanceItem.qml:28
+msgid "Location: %1"
+msgstr ""
+
+#: ../qml/components/InstanceItem.qml:29
+msgid "Version %1"
+msgstr ""
+
+#: ../qml/components/InstanceItem.qml:29
+msgid " With %1 users"
+msgstr ""
+
+#: ../qml/components/MainWebView.qml:108
+msgid "Copy Selection"
+msgstr ""
+
+#: ../qml/components/MainWebView.qml:114
+msgid "Copy Link"
+msgstr ""
+
+#: ../qml/components/MainWebView.qml:121
+msgid "Copy Image"
+msgstr ""
+
+#: ../qml/components/MainWebView.qml:128
+msgid "Download Image"
+msgstr ""
+
+#: ../qml/components/MainWebView.qml:137
+msgid "Open in browser"
+msgstr ""
+
+#: ../qml/components/dialogs/ConfirmDialog.qml:25
+msgid "Confirm Action"
+msgstr ""
+
+#: ../qml/components/dialogs/PromptDialog.qml:25
+msgid "Prompt Action"
+msgstr ""
 
 #: ../qml/pages/Information.qml:8
 msgid "About"
@@ -53,17 +130,8 @@ msgstr ""
 msgid "uPixelFed WebApp"
 msgstr ""
 
-#: ../qml/pages/LoadingPage.qml:53
-msgid "Loading "
-msgstr ""
-
 #: ../qml/pages/InstancePicker.qml:96
 msgid "Choose a PixelFed instance"
-msgstr ""
-
-#: ../qml/pages/InstancePicker.qml:104
-#: ../qml/components/BottomEdgeControlsHeader.qml:92
-msgid "Info"
 msgstr ""
 
 #: ../qml/pages/InstancePicker.qml:133
@@ -86,76 +154,8 @@ msgstr ""
 msgid "No results returned from server"
 msgstr ""
 
-#: ../qml/components/InstanceItem.qml:28
-msgid "Location: %1"
-msgstr ""
-
-#: ../qml/components/InstanceItem.qml:29
-msgid "Version %1"
-msgstr ""
-
-#: ../qml/components/InstanceItem.qml:29
-msgid " With %1 users"
-msgstr ""
-
-#: ../qml/components/MainWebView.qml:108
-msgid "Copy Selection"
-msgstr ""
-
-#: ../qml/components/MainWebView.qml:114
-msgid "Copy Link"
-msgstr ""
-
-#: ../qml/components/MainWebView.qml:121
-msgid "Copy Image"
-msgstr ""
-
-#: ../qml/components/MainWebView.qml:128
-msgid "Download Image"
-msgstr ""
-
-#: ../qml/components/MainWebView.qml:137
-msgid "Open in browser"
-msgstr ""
-
-#: ../qml/components/dialogs/PromptDialog.qml:25
-msgid "Prompt Action"
-msgstr ""
-
-#: ../qml/components/dialogs/ConfirmDialog.qml:25
-msgid "Confirm Action"
-msgstr ""
-
-#: ../qml/components/BottomEdgeControlsHeader.qml:55
-msgid "Open Externally"
-msgstr ""
-
-#: ../qml/components/BottomEdgeControlsHeader.qml:64
-msgid "Go home"
-msgstr ""
-
-#: ../qml/components/BottomEdgeControlsHeader.qml:74
-msgid "Reload"
-msgstr ""
-
-#: ../qml/components/BottomEdgeControlsHeader.qml:82
-msgid "Go Back"
-msgstr ""
-
-#: ../qml/components/BottomEdgeControlsHeader.qml:100
-msgid "Links open externally"
-msgstr ""
-
-#: ../qml/components/BottomEdgeControlsHeader.qml:100
-msgid "Links open internally"
-msgstr ""
-
-#: ../qml/components/BottomEdgeControlsHeader.qml:119
-msgid "Change Node"
-msgstr ""
-
-#: ../qml/components/BottomEdgeControlsHeader.qml:129
-msgid "Download location"
+#: ../qml/pages/LoadingPage.qml:53
+msgid "Loading "
 msgstr ""
 
 #: pixelfed-web.desktop.in.h:1

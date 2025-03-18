@@ -1,7 +1,7 @@
 import QtQuick 2.4
-import Ubuntu.Components 1.3
-import Ubuntu.Components.Popups 1.0
-import Ubuntu.Content 1.3
+import Lomiri.Components 1.3
+import Lomiri.Components.Popups 1.0
+import Lomiri.Content 1.3
 
 PopupBase {
     id: picker
