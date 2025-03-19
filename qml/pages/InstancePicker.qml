@@ -23,27 +23,25 @@ Page {
 	CachedHttpRequest {
 		id:cachedRequest
 
-		url:"https://the-federation.info/graphql"
-		getData: {
-			"operationName" : "Platform",
-			"variables" : '{"name":"pixelfed"}',
-			"query" : "query Platform($name: String!) {  platforms(name: $name) {    name    code    displayName    description    tagline    website    icon    __typename  }  nodes(platform: $name) {    id    name    version    openSignups    host    platform {      name      icon      __typename    }    countryCode    countryFlag    countryName    services {      name      __typename    }    __typename  }  statsGlobalToday(platform: $name) {    usersTotal    usersHalfYear    usersMonthly    localPosts    localComments    __typename  }  statsNodes(platform: $name) {    node {      id      __typename    }    usersTotal    usersHalfYear    usersMonthly    localPosts    localComments    __typename  }}"
-		}
+		url:"https://api.fedidb.org/v1/servers"
+		getData: { }
 
 		onResponseDataUpdated : {
 			searchRunning = false;
-			for(var j in  response.data.nodes) {
-				response.data.nodes[j].stats= {};
-			for(var i in response.data.statsNodes) {
-					if(response.data.statsNodes[i].node.id == response.data.nodes[j].id ) {
-						response.data.nodes[j].stats = response.data.statsNodes[i];
-					}
-				}
+			// console.log(JSON.stringify(response))
+
+			var nodes = response.data.filter(function(a){
+				return a.software && a.software.name && a.software.name.toLowerCase() == "pixelfed"
+			});
+			for(var n of nodes ) {
+				lastList.push(n);
 			}
-			var nodes = response.data.nodes;
-			lastList = nodes;
 			updateTime = Date.now();
-			asyncProcess.sendMessage( {searchTerm : customInstanceInput.displayText , inData : nodes });
+			asyncProcess.sendMessage( {searchTerm : customInstanceInput.displayText , inData : lastList });
+			if (response.links.next) {
+				cachedRequest.url = response.links.next;
+				cachedRequest.send(response.meta.next_cursor)
+			}
 		}
 
 		onRequestError: {
@@ -60,7 +58,7 @@ Page {
     function getSample () {
 		if(searchRunning) { return; }
 		searchRunning = true;
-
+		lastList = [];
 		cachedRequest.send("getinstances")
     }
 
@@ -176,20 +174,22 @@ Page {
 
             // Write a list of instances to the ListView
             function writeInList ( list ) {
+				console.log(JSON.stringify(list))
+
                 instanceList.children = ""
                 loading.visible = false
 				loadingError.visible = false;
-                list.sort(function(a,b) {return !a.stats.usersTotal ? (!b.stats.usersTotal ? 0 : 1) : (!b.stats.usersTotal ? -1 : parseFloat(b.stats.usersTotal) - parseFloat(a.stats.usersTotal));});
+                list.sort(function(a,b) {return !a.stats.user_count ? (!b.stats.user_count ? 0 : 1) : (!b.stats.user_count ? -1 : parseFloat(b.stats.user_count) - parseFloat(a.stats.user_count));});
                 for ( var i = 0; i < list.length; i++ ) {
                     var item = Qt.createComponent("../components/InstanceItem.qml")
                     item.createObject(this, {
-                        "text": list[i].name,
-                        "country": list[i].countryName != null ? list[i].countryName : "",
-                        "version": list[i].version != null ? list[i].version : "",
-						"users": list[i].stats.usersTotal != null ? list[i].stats.usersTotal : "",
-                        "iconSource":  list[i].thumbnail != null ? list[i].thumbnail : "../../assets/pixelfed_logo.svg",
-						"status":  list[i].openSignups != null ? list[i].openSignups : 0,
-						"rating":  list[i].score != null ? list[i].score : 0
+                        "text": list[i].domain,
+                        "country": list[i].location.country != null ? list[i].location.country : "",
+                        "version": list[i].software.version != null ? list[i].software.version : "",
+						"users": list[i].stats.user_count != null ? list[i].stats.user_count : "",
+                        "iconSource":  list[i].banner_url != null ? list[i].banner_url : "../../assets/pixelfed_logo.svg",
+						"status":  list[i].open_registration != null ? list[i].open_registration : 0,
+						//"rating":  list[i].score != null ? list[i].score : 0
                     })
                 }
             }
