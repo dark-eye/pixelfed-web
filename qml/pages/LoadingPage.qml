@@ -91,7 +91,7 @@ Item {
 
 			anchors.horizontalCenter: parent.horizontalCenter
 			width:Math.min(parent.width*0.66,units.gu(28))
-			color: UbuntuColors.orange
+			color: LomiriColors.orange
 			text: "Choose another Instance"
 			iconPosition:"left"
 			iconName:"swap"

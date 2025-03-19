@@ -39,7 +39,7 @@ Page {
 			width:height
 			source:"../../assets/logo.svg"
 			layer.enabled: true
-			layer.effect: UbuntuShapeOverlay {
+			layer.effect: LomiriShapeOverlay {
 				relativeRadius: 0.5
 			}
 			layer.sourceRect : Qt.rect(2,2,width-4,height-4)

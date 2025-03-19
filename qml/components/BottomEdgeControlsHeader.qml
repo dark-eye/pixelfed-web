@@ -37,7 +37,7 @@ PageHeader {
         signal changeNode();
 		
 		StyleHints {
-			backgroundColor: appSettings.incognitoMode ? UbuntuColors.purple : theme.palette.normal.background
+			backgroundColor: appSettings.incognitoMode ? LomiriColors.purple : theme.palette.normal.background
 		}
 		
 
