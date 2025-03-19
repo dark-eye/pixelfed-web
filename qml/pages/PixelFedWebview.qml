@@ -142,9 +142,10 @@ Page {
 		id: instancBottomEdge
 		visible: webviewPage.currentView().visible
 		height:units.gu(7)
+		// hint.status:BottomEdgeHint.Active
 		hint.iconName: "go-down"
 		hint.visible:visible
- 		hint.deactivateTimeout:10
+ 		hint.deactivateTimeout:5000
 		hint.flickable: webContainer
 		preloadContent: true
 		hint.opacity:  instancBottomEdge.hint.status != BottomEdgeHint.Inactive ? 1 : 0.1
@@ -166,6 +167,12 @@ Page {
 				}
 			}
 		}
+		Component.onCompleted: {
+			//Show hint on application load
+			hint.status = BottomEdgeHint.Locked;
+			hint.status = BottomEdgeHint.Active;
+		}
+
 	}
 	
 	//========================== Functions =======================

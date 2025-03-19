@@ -24,7 +24,7 @@ Page {
 		id:cachedRequest
 
 		url:"https://api.fedidb.org/v1/servers"
-		getData: { }
+		getData: { 'limit': 40 }
 
 		onResponseDataUpdated : {
 			searchRunning = false;
@@ -40,6 +40,7 @@ Page {
 			asyncProcess.sendMessage( {searchTerm : customInstanceInput.displayText , inData : lastList });
 			if (response.links.next) {
 				cachedRequest.url = response.links.next;
+				cachedRequest.getData = {};
 				cachedRequest.send(response.meta.next_cursor)
 			}
 		}
